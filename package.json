@@ -49,5 +49,12 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "dependencies": {
+    "ahooks": "^2.10.9",
+    "antd": "^4.16.13",
+    "lodash-es": "^4.17.21",
+    "pluralize": "^8.0.0",
+    "styled-components": "^5.3.1"
+  }
 }

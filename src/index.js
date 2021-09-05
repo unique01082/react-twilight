@@ -1,6 +1,8 @@
-import React from 'react'
-import styles from './styles.module.css'
+import { ThemeConsumer } from 'styled-components'
+import ThemeProvider from './ThemeProvider'
+import defaultTheme from './defaultTheme'
+import Box from './Box'
+import CheckBox from './CheckBox'
+import * as utilities from './utilities'
 
-export const ExampleComponent = ({ text }) => {
-  return <div className={styles.test}>Example Component: {text}</div>
-}
+export { ThemeProvider, ThemeConsumer, defaultTheme, Box, CheckBox, utilities }

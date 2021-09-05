@@ -3,6 +3,7 @@
 
 # dependencies
 node_modules
+react-twilight-properties-manager
 
 # builds
 build
