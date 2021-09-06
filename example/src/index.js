@@ -1,11 +1,10 @@
-import './index.css'
-
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './App'
-import { ThemeProvider, defaultTheme } from 'react-twilight'
 
-console.log('defaultTheme :>> ', defaultTheme)
+import 'antd/dist/antd.css'
+import App from './App'
+import './index.css'
+import { ThemeProvider, defaultTheme } from 'react-twilight'
 
 ReactDOM.render(
   <ThemeProvider theme={defaultTheme}>
