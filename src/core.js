@@ -35,7 +35,9 @@ export const createParser = (config) => {
 
     const propsToProcess = intersection(Object.keys(props), allowedProps)
 
-    let styles = {}
+    console.log('propsToProcess :>> ', propsToProcess)
+
+    let styles = { '&:hover': { color: 'blue' } }
     propsToProcess.forEach((prop) => {
       const styledFn = styledFnMap.get(prop)
       const rawValue = props[prop]
@@ -70,6 +72,7 @@ export const createParser = (config) => {
       }
     })
 
+    console.log('styles :>> ', styles)
     return styles
   }
 

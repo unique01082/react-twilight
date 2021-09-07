@@ -12,6 +12,7 @@ import {
   space,
   typography
 } from './utilities'
+import { hover } from './selectors'
 
 const Box = styled.div(
   background,
@@ -23,7 +24,8 @@ const Box = styled.div(
   position,
   shadow,
   space,
-  typography
+  typography,
+  hover
 )
 
 export default Box

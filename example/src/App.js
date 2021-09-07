@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
-import { utilities } from 'react-twilight'
+import { utilities, selectors } from 'react-twilight'
 import { kebabCase } from 'lodash'
 import { usePersistFn, useCreation, useMount } from 'ahooks'
 
@@ -15,10 +15,19 @@ import properties from './properties.json'
 function App() {
   const styledFns = useCreation(
     () =>
-      Object.keys(utilities)
-        .map((key) => utilities[key].config)
-        .reduce((acc, cur) => acc.concat(cur), [])
-        .sort((a, b) => (a.scaleName > b.scaleName ? 1 : -1)),
+      []
+        .concat(
+          Object.keys(utilities)
+            .map((key) => utilities[key].config)
+            .reduce((acc, cur) => acc.concat(cur), [])
+            .sort((a, b) => (a.scaleName > b.scaleName ? 1 : -1))
+        )
+        .concat(
+          Object.keys(selectors)
+            .map((key) => selectors[key].config)
+            .reduce((acc, cur) => acc.concat(cur), [])
+            .sort((a, b) => (a.scaleName > b.scaleName ? 1 : -1))
+        ),
     []
   )
   const reset = usePersistFn(() =>

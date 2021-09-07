@@ -6,6 +6,7 @@ import { PROPERTY_STATUS_OS, values } from './db'
 import { useMount, useRequest } from 'ahooks'
 
 import EditButton from './EditButton'
+import PropsDetail from './PropsDetail'
 
 const PropertiesTable = () => {
   const [data, setData] = useState()
@@ -43,7 +44,7 @@ const PropertiesTable = () => {
         title='Coverage by'
         dataIndex='coverageBy'
         key='coverageBy'
-        render={(coverageBy) => coverageBy?.join(', ')}
+        render={(coverageBy) => <PropsDetail propNames={coverageBy} />}
       />
       <Column
         title='URL'
@@ -52,8 +53,8 @@ const PropertiesTable = () => {
         render={(urls) => (
           <ul>
             {urls.map((url) => (
-              <li>
-                <a href={url} target='_blank' rel='noreferrer'>
+              <li key={url}>
+                <a href={url} rel='noopener noreferrer' target='_blank'>
                   {url}
                 </a>
               </li>
