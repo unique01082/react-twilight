@@ -34,6 +34,13 @@ function normalizeInput(config) {
   return config
 }
 
+function toStyledObject(value, properties) {
+  return properties.reduce(
+    (acc, property) => Object.assign(acc, { [property]: value }),
+    {}
+  )
+}
+
 function createParseFn({
   propNames,
   properties = propNames,
@@ -44,50 +51,41 @@ function createParseFn({
   propNames = Array.isArray(propNames) ? propNames : [propNames]
   properties = Array.isArray(properties) ? properties : [properties]
   const parseFn = (rawValue, props) => {
-    console.log('rawValue :>> ', rawValue)
-    console.log('props :>> ', props)
     const {
-      theme: { breakpoints, _media, _mediaMap, ...theme }
+      theme: { breakpoints, _breakpointsMap, _media, _mediaMap, ...theme }
     } = props
     const scale = get(theme, scaleName, defaultScale)
-    console.log('scale :>> ', scale)
 
     if (typeof rawValue === 'string' || typeof rawValue === 'number') {
       const value = transform(rawValue, scale, props)
-      return properties.reduce(
-        (acc, property) => Object.assign(acc, { [property]: value }),
-        {}
-      )
+      return toStyledObject(value, properties)
     }
     if (Array.isArray(rawValue)) {
-      const result = {}
       const values = rawValue
-        .slice(0, _media.length)
-        .map((r, index) => transform(r, scale, props))
-      values.forEach((value, index) => {
-        if (!isNil(value)) {
-          const d = properties.reduce(
-            (acc, property) => Object.assign(acc, { [property]: value }),
-            {}
-          )
-          Object.assign(result, !_media[index] ? d : { [_media[index]]: d })
-        }
-      })
-      console.log('b :>> ', result)
-      return result
+        .slice(0, _breakpointsMap.length)
+        .map((r) => transform(r, scale, props))
+
+      return values.reduce((acc, value, index) => {
+        if (isNil(value)) return acc
+        const styledObject = toStyledObject(value, properties)
+        const media = _breakpointsMap[index][1]
+
+        return Object.assign(
+          acc,
+          !media ? styledObject : { [media]: styledObject }
+        )
+      }, {})
     }
     if (isPlainObject(rawValue)) {
       return Object.keys(rawValue).reduce((acc, key) => {
         const value = transform(rawValue[key], scale, props)
-        const a = properties.reduce(
-          (acc, property) => Object.assign(acc, { [property]: value }),
-          {}
-        )
+        if (isNil(value)) return acc
+        const styledObject = toStyledObject(value, properties)
+        const media = _breakpointsMap[key]?.[1]
+
         return Object.assign(
           acc,
-          !_mediaMap[breakpoints[key]]
-            ? a
-            : { [_mediaMap[breakpoints[key]]]: a }
+          !media ? styledObject : { [media]: styledObject }
         )
       }, {})
     }
@@ -106,21 +104,13 @@ function createParseFn({
 
 function createFn(parseFn) {
   const styledFn = (props) => {
-    const result = {}
-
     const propsToProcess = intersection(Object.keys(props), parseFn.propNames)
 
-    console.log('propsToProcess :>> ', propsToProcess)
-
+    const result = {}
     propsToProcess.forEach((prop) => {
-      const parseValue = parseFn(props[prop], props)
-
-      console.log('parseValue :>> ', parseValue)
-
-      merge(result, parseValue)
+      merge(result, parseFn(props[prop], props))
     })
 
-    console.log('result :>> ', result)
     return result
   }
 
