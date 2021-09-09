@@ -1,6 +1,6 @@
-import color from './color'
+import { color, backgroundColor, opacity } from './color'
 
 // !IMPORTANT!
 // default export is forbidden
 
-export { color }
+export { color, backgroundColor, opacity }

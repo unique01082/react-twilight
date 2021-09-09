@@ -2,8 +2,9 @@ import merge from 'lodash-es/merge'
 import intersection from 'lodash-es/intersection'
 import isNil from 'lodash-es/isNil'
 import isPlainObject from 'lodash-es/isPlainObject'
-import normalizeInput from './normalizeInput'
+
 import { get } from '../utils'
+import normalizeInput from './normalizeInput'
 
 function toStyledObject(value, properties) {
   return properties.reduce(
@@ -19,12 +20,9 @@ function createParseFn({
   defaultScale,
   transform
 }) {
-  const parseFn = (rawValue, props) => {
-    console.log(rawValue, props)
-    const {
-      theme: { breakpoints, _breakpointsMap, _media, _mediaMap, ...theme }
-    } = props
-    const scale = get(theme, scaleName, defaultScale)
+  const parseFn = (rawValue, props, theme) => {
+    const { _breakpointsMap, ...restTheme } = theme
+    const scale = get(restTheme, scaleName, defaultScale)
 
     if (typeof rawValue === 'string' || typeof rawValue === 'number') {
       const value = transform(rawValue, scale, props)
@@ -73,11 +71,11 @@ function createParseFn({
 }
 
 function createFn(parseFn) {
-  const styledFn = (props) => {
+  const styledFn = (props, theme = props.theme) => {
     const propsToProcess = intersection(Object.keys(props), parseFn.propNames)
 
     const result = propsToProcess.reduce(
-      (acc, prop) => merge(acc, parseFn(props[prop], props)),
+      (acc, prop) => merge(acc, parseFn(props[prop], props, theme)),
       {}
     )
 
@@ -93,9 +91,5 @@ export default function createStyleParser(input) {
   const styleParser =
     typeof input === 'function' ? input : createParseFn(normalizeInput(input))
 
-  const result = createFn(styleParser)
-
-  const a = (props) => ({ color: props.color })
-  a.propNames = ['color']
-  return a
+  return createFn(styleParser)
 }

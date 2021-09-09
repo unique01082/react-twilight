@@ -12,7 +12,9 @@ export default function normalizeInput(config) {
   if (typeof config === 'string') {
     return {
       propNames: [config],
-      scaleName: pluralize(config)
+      properties: [config],
+      scaleName: pluralize(config),
+      transform: defaultTransform
     }
   }
 
@@ -24,7 +26,8 @@ export default function normalizeInput(config) {
     return {
       propNames: config,
       properties: config[0],
-      scaleName: pluralize(config[0])
+      scaleName: pluralize(config[0]),
+      transform: defaultTransform
     }
   }
 

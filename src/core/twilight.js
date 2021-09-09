@@ -3,7 +3,7 @@ import intersection from 'lodash-es/intersection'
 
 import { twilightMap } from '.'
 
-const twilight = (props) => {
+const twilight = (props, theme = props.theme) => {
   const propsToProcess = intersection(
     Object.keys(props),
     Array.from(twilightMap.keys())
@@ -11,7 +11,7 @@ const twilight = (props) => {
   console.log('propsToProcess :>> ', propsToProcess)
 
   const result = propsToProcess.reduce(
-    (acc, prop) => merge(acc, twilightMap.get(prop)(props)),
+    (acc, prop) => merge(acc, twilightMap.get(prop)(props, theme)),
     {}
   )
 

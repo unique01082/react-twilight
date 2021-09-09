@@ -8,7 +8,7 @@ export default function createVariantParser(input) {
     scaleName
   } = normalizeInput(input)
   const selectorParser = (props) =>
-    twilight(props.theme[scaleName][props[first]])
+    twilight(props.theme[scaleName][props[first]], props.theme)
 
   selectorParser.propNames = propNames
 
