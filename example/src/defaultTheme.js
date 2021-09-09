@@ -1,27 +1,7 @@
-import { buildValues } from './utils'
-
-const breakpoints = ['500px', '1000px']
-
-// aliases
-breakpoints.s = breakpoints[0]
-breakpoints.m = breakpoints[1]
-
-const a = [
-  '#f1f8ff',
-  '#dbedff',
-  '#c8e1ff',
-  '#79b8ff',
-  '#2188ff',
-  '#0366d6',
-  '#005cc5',
-  '#044289',
-  '#032f62',
-  '#05264c'
-]
-
-a._ = a[2]
+import { buildValues } from 'react-twilight'
 
 export default {
+  breakpoints: buildValues(['500px', '1000px'], { s: 0, m: 1 }),
   colorPalette: {
     white: '#aaa',
     blue: buildValues(
@@ -42,6 +22,9 @@ export default {
       { black: '#002200' }
     )
   },
-  breakpoints,
-  opacity: [0, 1 / 4, 2 / 4, 3 / 4, 1]
+  opacities: [0, 1 / 4, 2 / 4, 3 / 4, 1],
+  typographyTypes: {
+    bold: { color: 'darkorange' },
+    light: { color: 'lightpink' }
+  }
 }

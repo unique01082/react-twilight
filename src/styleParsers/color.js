@@ -1,6 +1,6 @@
-import { createStyledFn } from '../core2'
+import { createStyleParser } from '../core'
 
-export default createStyledFn({
+export default createStyleParser({
   propNames: ['color', 'c'],
   properties: 'color',
   scale: 'colorPalette'

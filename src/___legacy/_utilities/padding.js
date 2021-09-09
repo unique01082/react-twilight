@@ -1,4 +1,4 @@
-import { system } from '../core'
+import { system } from '../../core'
 
 export default system([
   {

@@ -1,21 +1,34 @@
 import { ThemeConsumer } from 'styled-components'
 import ThemeProvider from './ThemeProvider'
-import defaultTheme from './defaultTheme'
-import Box from './Box'
-import Box2 from './Box2'
-import CheckBox from './CheckBox'
-import * as utilities from './utilities'
-import * as selectors from './selectors'
+import { twilight, twilightMap } from './core'
+import withTwilight from './withTwilight'
+import { buildValues } from './utils'
 
-import core2 from './core2'
+import * as styles from './styleParsers'
+import * as selectors from './selectorParsers'
+import * as variants from './variantParsers'
+
+console.log('styles :>> ', styles)
+
+const addAll = (object) => {
+  Object.keys(object).forEach((key) => {
+    twilightMap.register(object[key])
+  })
+}
+
+const addAllStyles = () => addAll(styles)
+const addAllSelectors = () => addAll(selectors)
+const addAllVariants = () => addAll(variants)
+
+window.twilightMap = twilightMap
 
 export {
   ThemeProvider,
   ThemeConsumer,
-  defaultTheme,
-  Box,
-  Box2,
-  CheckBox,
-  utilities,
-  selectors
+  withTwilight,
+  buildValues,
+  styles,
+  addAllStyles,
+  addAllSelectors,
+  addAllVariants
 }

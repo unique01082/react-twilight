@@ -1,7 +1,7 @@
 import merge from 'lodash-es/merge'
 import intersection from 'lodash-es/intersection'
 import pluralize from 'pluralize'
-import { get } from './utils'
+import { get } from '../utils'
 
 window.pluralize = pluralize
 

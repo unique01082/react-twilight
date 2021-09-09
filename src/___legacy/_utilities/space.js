@@ -1,4 +1,4 @@
-import { compose } from '../core'
+import { compose } from '../../core'
 import margin from './margin'
 import padding from './padding'
 

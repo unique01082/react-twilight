@@ -2,37 +2,8 @@ import merge from 'lodash-es/merge'
 import intersection from 'lodash-es/intersection'
 import isNil from 'lodash-es/isNil'
 import isPlainObject from 'lodash-es/isPlainObject'
-import pluralize from 'pluralize'
-import { get } from './utils'
-
-function defaultTransform(value, scale) {
-  return get(scale, value, value)
-}
-
-function normalizeInput(config) {
-  if (!config) throw new Error('Config object required')
-
-  if (typeof config === 'string') {
-    return {
-      propNames: config,
-      scale: pluralize(config)
-    }
-  }
-
-  if (Array.isArray(config)) {
-    if (config.length === 0) throw new Error('Empty array. Expected an item')
-    if (!config[0] || typeof config[0] !== 'string')
-      throw new Error('Invalid data type of the first item. Expected a string')
-
-    return {
-      propNames: config,
-      properties: config[0],
-      scale: pluralize(config[0])
-    }
-  }
-
-  return config
-}
+import normalizeInput from './normalizeInput'
+import { get } from '../utils'
 
 function toStyledObject(value, properties) {
   return properties.reduce(
@@ -43,14 +14,13 @@ function toStyledObject(value, properties) {
 
 function createParseFn({
   propNames,
-  properties = propNames,
-  scale: scaleName,
+  properties,
+  scaleName,
   defaultScale,
-  transform = defaultTransform
+  transform
 }) {
-  propNames = Array.isArray(propNames) ? propNames : [propNames]
-  properties = Array.isArray(properties) ? properties : [properties]
   const parseFn = (rawValue, props) => {
+    console.log(rawValue, props)
     const {
       theme: { breakpoints, _breakpointsMap, _media, _mediaMap, ...theme }
     } = props
@@ -106,22 +76,26 @@ function createFn(parseFn) {
   const styledFn = (props) => {
     const propsToProcess = intersection(Object.keys(props), parseFn.propNames)
 
-    const result = {}
-    propsToProcess.forEach((prop) => {
-      merge(result, parseFn(props[prop], props))
-    })
+    const result = propsToProcess.reduce(
+      (acc, prop) => merge(acc, parseFn(props[prop], props)),
+      {}
+    )
 
     return result
   }
 
-  styledFn.cache = {}
+  Object.assign(styledFn, parseFn, { parseFn })
 
   return styledFn
 }
 
-export function createStyledFn(input) {
-  const parseFn =
+export default function createStyleParser(input) {
+  const styleParser =
     typeof input === 'function' ? input : createParseFn(normalizeInput(input))
 
-  return createFn(parseFn)
+  const result = createFn(styleParser)
+
+  const a = (props) => ({ color: props.color })
+  a.propNames = ['color']
+  return a
 }
