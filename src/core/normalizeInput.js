@@ -34,7 +34,7 @@ export default function normalizeInput(config) {
   if (isPlainObject(config)) {
     let {
       propNames,
-      properties = propNames,
+      properties = Array.isArray(propNames) ? propNames[0] : propNames,
       scale: scaleName,
       defaultScale,
       transform = defaultTransform

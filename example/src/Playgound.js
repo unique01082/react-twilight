@@ -9,16 +9,17 @@ const Playground = () => (
     <Heading
       // color='blue.light'
       // color={['blue.light', 'blue', 'blue.dark']}
-      color={{ _default: 'blue.light', s: 'blue', m: 'blue.dark' }}
+      // color={{ _default: 'blue.light', s: 'blue', m: 'blue.dark' }}
       // bg='blue.light'
-      bg={['blue.light', 'blue', 'blue.dark']}
+      // bg={['blue.light', 'blue', 'blue.dark']}
       // whileHover={{ color: 'blue' }}
       // whileHover={{ color: ['green', 'pink', 'red'] }}
-      whileHover={{
-        color: { _default: 'green', s: 'pink', m: 'red' }
-      }}
+      // hover={{
+      //   color: { _default: 'green', s: 'pink', m: 'red' }
+      // }}
       typographyType='bold'
-      opacity={3}
+      // tt='light'
+      // opacity={3}
     >
       Hello world!
     </Heading>

@@ -5,13 +5,7 @@ import isPlainObject from 'lodash-es/isPlainObject'
 
 import { get } from '../utils'
 import normalizeInput from './normalizeInput'
-
-function toStyledObject(value, properties) {
-  return properties.reduce(
-    (acc, property) => Object.assign(acc, { [property]: value }),
-    {}
-  )
-}
+import toStyledObject from './toStyledObject'
 
 function createParseFn({
   propNames,

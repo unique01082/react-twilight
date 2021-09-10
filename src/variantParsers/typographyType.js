@@ -1,3 +1,3 @@
 import { createVariantParser } from '../core'
 
-export default createVariantParser('typographyType')
+export default createVariantParser(['typographyType', 'tt'])

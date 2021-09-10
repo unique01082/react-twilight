@@ -1,6 +1,6 @@
 import { createSelectorParser } from '../core'
 
 export default createSelectorParser({
-  propNames: 'whileHover',
-  properties: ':hover'
+  propNames: ['whileHover', 'hover'],
+  properties: '&:hover'
 })

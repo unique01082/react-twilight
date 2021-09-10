@@ -24,7 +24,7 @@ export default {
   },
   opacities: [0, 1 / 4, 2 / 4, 3 / 4, 1],
   typographyTypes: {
-    bold: { color: ['red', 'green', 'pink'] },
+    bold: { bg: ['blue', 'blue.dark', 'blue.light'] },
     light: { color: 'lightpink' }
   }
 }
