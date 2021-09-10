@@ -7,7 +7,6 @@ import kebabCase from 'lodash/kebabCase'
 
 import { PROPERTY_STATUS_OS, values, clear, set } from './db'
 import properties from './properties.json'
-import EditButton from './EditButton'
 import PropsDetail from './PropsDetail'
 
 const setup = () =>
@@ -88,12 +87,6 @@ const PropertiesTable = () => {
             ))}
           </ul>
         )}
-      />
-      <Column
-        title='Actions'
-        dataIndex='property'
-        key='actions'
-        render={(property) => <EditButton property={property} />}
       />
     </Table>
   )
