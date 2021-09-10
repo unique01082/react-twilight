@@ -1,21 +1,45 @@
 import React, { useState } from 'react'
 import { Table, Tag } from 'antd'
 import Column from 'antd/lib/table/Column'
-
-import { PROPERTY_STATUS_OS, values } from './db'
 import { useMount, useRequest } from 'ahooks'
+import { getTwilightMap } from 'react-twilight'
+import kebabCase from 'lodash/kebabCase'
 
+import { PROPERTY_STATUS_OS, values, clear, set } from './db'
+import properties from './properties.json'
 import EditButton from './EditButton'
 import PropsDetail from './PropsDetail'
 
-const PropertiesTable = () => {
-  const [data, setData] = useState()
-  const { loading, run } = useRequest(() => values(PROPERTY_STATUS_OS), {
-    manual: true
+const setup = () =>
+  clear(PROPERTY_STATUS_OS)
+    .then(() =>
+      Promise.all(
+        properties.map((property) =>
+          set(PROPERTY_STATUS_OS, property.property, property)
+        )
+      )
+    )
+    .then(() => values(PROPERTY_STATUS_OS))
+
+const getSupportedProperties = () => {
+  const result = new Set()
+  getTwilightMap().forEach((fn) => {
+    if (fn._type === 'style') {
+      fn.properties.forEach((r) => result.add(kebabCase(r)))
+    }
   })
+
+  return result
+}
+
+const PropertiesTable = () => {
+  const [data, setData] = useState([])
+  const [supportedProperties, setSupportedProperties] = useState([])
+  const { loading, run } = useRequest(setup, { manual: true })
 
   useMount(() => {
     run().then(setData)
+    setSupportedProperties(getSupportedProperties())
   })
 
   return (
@@ -23,17 +47,18 @@ const PropertiesTable = () => {
       dataSource={data}
       size='small'
       loading={loading}
-      rowClassName={({ coverage }) =>
-        coverage ? 'coveraged' : 'not-coveraged'
+      rowKey='property'
+      rowClassName={({ property }) =>
+        supportedProperties.has(property) ? 'coveraged' : 'not-coveraged'
       }
     >
       <Column title='Property' dataIndex='property' key='property' />
       <Column
         title='Coverage'
-        dataIndex='coverage'
+        dataIndex='property'
         key='coverage'
-        render={(coverage) =>
-          coverage ? (
+        render={(property) =>
+          supportedProperties.has(property) ? (
             <Tag color='success'>Coverage</Tag>
           ) : (
             <Tag color='default'>Not Coverage</Tag>
@@ -42,9 +67,11 @@ const PropertiesTable = () => {
       />
       <Column
         title='Coverage by'
-        dataIndex='coverageBy'
+        dataIndex='property'
         key='coverageBy'
-        render={(coverageBy) => <PropsDetail propNames={coverageBy} />}
+        render={(property) => (
+          <PropsDetail key={property} property={property} />
+        )}
       />
       <Column
         title='URL'

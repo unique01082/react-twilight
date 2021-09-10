@@ -54,6 +54,7 @@ function createParseFn({
   }
 
   Object.assign(parseFn, {
+    _type: 'style',
     propNames,
     properties,
     scaleName,

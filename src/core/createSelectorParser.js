@@ -20,6 +20,8 @@ export default function createSelectorParser(input) {
   }
 
   selectorParser.propNames = propNames
+  selectorParser.properties = properties
+  selectorParser._type = 'selector'
 
   return selectorParser
 }

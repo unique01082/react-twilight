@@ -18,11 +18,14 @@ const addAllStyles = () => addAll(styles)
 const addAllSelectors = () => addAll(selectors)
 const addAllVariants = () => addAll(variants)
 
+const getTwilightMap = () => twilightMap
+
 window.twilightMap = twilightMap
 
 export {
   ThemeProvider,
   ThemeConsumer,
+  getTwilightMap,
   withTwilight,
   buildValues,
   styles,

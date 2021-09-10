@@ -22,6 +22,8 @@ export default function createVariantParser(input) {
   }
 
   selectorParser.propNames = propNames
+  selectorParser.scaleName = scaleName
+  selectorParser._type = 'variant'
 
   return selectorParser
 }
