@@ -22,7 +22,8 @@ const setup = () =>
 
 const getSupportedProperties = () => {
   const result = new Set()
-  getTwilightMap().forEach((fn) => {
+  getTwilightMap().forEach((fn, key) => {
+    console.log(key)
     if (fn._type === 'style') {
       fn.properties.forEach((r) => result.add(kebabCase(r)))
     }

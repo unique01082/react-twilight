@@ -25,7 +25,7 @@ export default function normalizeInput(config) {
 
     return {
       propNames: config,
-      properties: config[0],
+      properties: [config[0]],
       scaleName: pluralize(config[0]),
       transform: defaultTransform
     }

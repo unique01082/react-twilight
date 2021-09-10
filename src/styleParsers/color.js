@@ -5,10 +5,4 @@ export const color = createStyleParser({
   properties: 'color',
   scale: 'colorPalette'
 })
-
-export const backgroundColor = createStyleParser({
-  propNames: ['backgroundColor', 'bg'],
-  scale: 'colorPalette'
-})
-
 export const opacity = createStyleParser('opacity')

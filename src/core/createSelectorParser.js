@@ -9,7 +9,6 @@ export default function createSelectorParser(input) {
 
   const selectorParser = (props) => {
     const propsToProcess = intersection(Object.keys(props), propNames)
-    console.log('propsToProcess :>> ', propsToProcess)
 
     const result = propsToProcess.reduce(
       (acc, prop) => Object.assign(acc, twilight(props[prop], props.theme)),
