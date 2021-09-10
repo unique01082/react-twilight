@@ -13,6 +13,7 @@
   },
   "scripts": {
     "build": "microbundle-crl --no-compress --format modern,cjs",
+    "build:minified": "microbundle-crl --format modern",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
     "prepare": "run-s build",
     "test": "run-s test:unit test:lint test:build",
@@ -52,8 +53,6 @@
     "dist"
   ],
   "dependencies": {
-    "ahooks": "^2.10.9",
-    "antd": "^4.16.13",
     "lodash-es": "^4.17.21",
     "pluralize": "^8.0.0",
     "styled-components": "^5.3.1"
