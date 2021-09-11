@@ -1,7 +1,7 @@
 import { buildValues } from 'react-twilight'
 
 export default {
-  breakpoints: buildValues(['500px', '1000px'], { s: 0, m: 1 }),
+  breakpoints: buildValues([500, 1000], { s: 0, m: 1 }),
   colorPalette: {
     white: '#aaa',
     blue: buildValues(

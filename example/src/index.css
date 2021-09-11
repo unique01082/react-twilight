@@ -4,3 +4,58 @@
 .not-coveraged {
   background-color: #ff4d4f19;
 }
+
+.menu {
+  -webkit-text-size-adjust: 100%;
+  font-family: Verdana, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #000 !important;
+  box-sizing: inherit;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+.menu li {
+  -webkit-text-size-adjust: 100%;
+  font-family: Verdana, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #000 !important;
+  list-style-type: none;
+  box-sizing: inherit;
+  float: left;
+}
+
+.menu li a {
+  -webkit-text-size-adjust: 100%;
+  font-family: Verdana, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  list-style-type: none;
+  box-sizing: inherit;
+  background-color: transparent;
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.menu li a.active {
+  -webkit-text-size-adjust: 100%;
+  font-family: Verdana, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  list-style-type: none;
+  box-sizing: inherit;
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  background-color: #04aa6d;
+}

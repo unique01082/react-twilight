@@ -1,28 +1,52 @@
 import React from 'react'
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useLocation
+} from 'react-router-dom'
 
 import Playgound from './Playgound'
 import ParsersTable from './ParsersTable'
 import PropertiesTable from './PropertiesTable'
+import Sample from './Sample'
+import Sample2 from './Sample2'
 
-function App() {
+const Menu = ({ menu }) => {
+  const { pathname } = useLocation()
+  const simplePathName = pathname.replace(/\//g, '')
+
+  return (
+    <ul className='menu'>
+      {Object.keys(menu).map((key) => (
+        <li key={key}>
+          <Link
+            to={`/${key}`}
+            className={key === simplePathName ? 'active' : undefined}
+          >
+            {menu[key]}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+const menu = {
+  '': 'Home',
+  playground: 'Playground',
+  parsers: 'Parsers',
+  properties: 'CSS Properties',
+  sample: 'Sample',
+  sample2: 'Sample2'
+}
+
+function App(props) {
   return (
     <Router>
       <nav>
-        <ul>
-          <li>
-            <Link to='/'>Home</Link>
-          </li>
-          <li>
-            <Link to='/playground'>Playground</Link>
-          </li>
-          <li>
-            <Link to='/parsers'>Parsers</Link>
-          </li>
-          <li>
-            <Link to='/properties'>CSS Properties</Link>
-          </li>
-        </ul>
+        <Menu menu={menu} />
       </nav>
       <Switch>
         <Route path='/playground'>
@@ -33,6 +57,12 @@ function App() {
         </Route>
         <Route path='/properties'>
           <PropertiesTable />
+        </Route>
+        <Route path='/sample'>
+          <Sample />
+        </Route>
+        <Route path='/sample2'>
+          <Sample2 />
         </Route>
         <Route path='/'>
           <h1>Welcome!</h1>
