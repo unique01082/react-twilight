@@ -1,5 +1,6 @@
 import merge from 'lodash-es/merge'
 import intersection from 'lodash-es/intersection'
+import difference from 'lodash-es/difference'
 import isNil from 'lodash-es/isNil'
 import isPlainObject from 'lodash-es/isPlainObject'
 
@@ -67,7 +68,10 @@ function createParseFn({
 
 function createFn(parseFn) {
   const styledFn = (props, theme = props.theme) => {
-    const propsToProcess = intersection(Object.keys(props), parseFn.propNames)
+    const propsToProcess = difference(
+      intersection(Object.keys(props), parseFn.propNames),
+      props.ignoreProps
+    )
 
     const result = propsToProcess.reduce(
       (acc, prop) => merge(acc, parseFn(props[prop], props, theme)),

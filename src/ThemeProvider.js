@@ -1,12 +1,24 @@
 import React from 'react'
 import { ThemeProvider as ScThemeProvider } from 'styled-components'
 
-function createMediaQuery(n) {
-  if (!n) return
-  return `@media screen and (min-width: ${n})`
+function parseValue(value) {
+  if (typeof value === 'number') {
+    return `${value}px`
+  }
+  return value
 }
 
-const ThemeProvider = ({ theme, theme: { breakpoints }, ...restProps }) => {
+function createMediaQuery(n) {
+  if (!n) return
+  return `@media screen and (min-width: ${parseValue(n)})`
+}
+
+const ThemeProvider = ({
+  theme,
+  theme: { breakpoints },
+  buildMediaQuery = createMediaQuery,
+  ...restProps
+}) => {
   breakpoints.unshift(undefined)
 
   return (
@@ -16,7 +28,7 @@ const ThemeProvider = ({ theme, theme: { breakpoints }, ...restProps }) => {
         _breakpointsMap: Object.keys(breakpoints).reduce(
           (acc, key) =>
             Object.assign(acc, {
-              [key]: [breakpoints[key], createMediaQuery(breakpoints[key])]
+              [key]: [breakpoints[key], buildMediaQuery(breakpoints[key])]
             }),
           breakpoints
         )

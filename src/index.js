@@ -1,6 +1,11 @@
 import { ThemeConsumer } from 'styled-components'
 import ThemeProvider from './ThemeProvider'
-import { twilightMap } from './core'
+import {
+  twilightMap,
+  createStyleParser,
+  createSelectorParser,
+  createVariantParser
+} from './core'
 import withTwilight from './withTwilight'
 import { buildValues } from './utils'
 
@@ -26,6 +31,9 @@ export {
   ThemeProvider,
   ThemeConsumer,
   getTwilightMap,
+  createStyleParser,
+  createSelectorParser,
+  createVariantParser,
   withTwilight,
   buildValues,
   styles,

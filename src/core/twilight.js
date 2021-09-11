@@ -1,12 +1,13 @@
 import merge from 'lodash-es/merge'
 import intersection from 'lodash-es/intersection'
+import difference from 'lodash-es/difference'
 
 import { twilightMap } from '.'
 
 const twilight = (props, theme = props.theme) => {
-  const propsToProcess = intersection(
-    Object.keys(props),
-    Array.from(twilightMap.keys())
+  const propsToProcess = difference(
+    intersection(Object.keys(props), Array.from(twilightMap.keys())),
+    props.ignoreProps
   )
 
   const result = propsToProcess.reduce(
