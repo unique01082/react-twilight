@@ -38,7 +38,7 @@ const PropsTable = () => {
           title='Properties'
           dataIndex='properties'
           key='properties'
-          render={(properties) => properties?.join(' and ')}
+          render={(properties) => properties?.join?.(' and ')}
         />
         <Column
           title='kebabCase(Properties)'
@@ -90,13 +90,7 @@ const PropsTable = () => {
           title='Properties'
           dataIndex='properties'
           key='properties'
-          render={(properties) => properties?.join(' and ')}
-        />
-        <Column
-          title='kebabCase(Properties)'
-          dataIndex='properties'
-          key='properties'
-          render={(properties) => properties?.map(kebabCase).join(' and ')}
+          render={(properties) => properties?.join?.(' and ')}
         />
         <Column title='Theme scale' dataIndex='scaleName' key='scaleName' />
         <Column title='Type' dataIndex='_type' key='_type' />
