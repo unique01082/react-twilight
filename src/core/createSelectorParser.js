@@ -19,7 +19,12 @@ export default function createSelectorParser(input) {
       {}
     )
 
-    return toStyledObject(result, properties)
+    let caculatedProperties
+    if (typeof properties === 'function') {
+      caculatedProperties = [properties(props)]
+    }
+
+    return toStyledObject(result, caculatedProperties ?? properties)
   }
 
   selectorParser.propNames = propNames

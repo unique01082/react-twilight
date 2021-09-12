@@ -41,7 +41,9 @@ export default function normalizeInput(config) {
     } = config
 
     propNames = Array.isArray(propNames) ? propNames : [propNames]
-    properties = Array.isArray(properties) ? properties : [properties]
+    if (typeof properties !== 'function' && !Array.isArray(properties)) {
+      properties = [properties]
+    }
 
     return { propNames, properties, scaleName, defaultScale, transform }
   }
