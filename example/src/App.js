@@ -12,6 +12,8 @@ import ParsersTable from './ParsersTable'
 import PropertiesTable from './PropertiesTable'
 import Sample from './Sample'
 import Sample2 from './Sample2'
+import TwilightPragma from './TwilightPragma'
+import TwilightFactory from './TwilightFactory'
 
 const Menu = ({ menu }) => {
   const { pathname } = useLocation()
@@ -39,7 +41,9 @@ const menu = {
   parsers: 'Parsers',
   properties: 'CSS Properties',
   sample: 'Sample',
-  sample2: 'Sample2'
+  sample2: 'Sample2',
+  pragma: 'Twilight Pragma',
+  factory: 'Twilight Factory'
 }
 
 function App(props) {
@@ -64,8 +68,14 @@ function App(props) {
         <Route path='/sample2'>
           <Sample2 />
         </Route>
+        <Route path='/pragma'>
+          <TwilightPragma />
+        </Route>
+        <Route path='/factory'>
+          <TwilightFactory />
+        </Route>
         <Route path='/'>
-          <h1>Welcome!</h1>
+          <h1>Home!</h1>
         </Route>
       </Switch>
     </Router>

@@ -1,3 +1,4 @@
+import styled from 'styled-components'
 import merge from 'lodash-es/merge'
 import intersection from 'lodash-es/intersection'
 import difference from 'lodash-es/difference'
@@ -18,4 +19,9 @@ const twilight = (props, theme = props.theme) => {
   return result
 }
 
-export default twilight
+const decoratedTwilight = new Proxy(twilight, {
+  apply: Reflect.apply,
+  get: (target, prop) => styled(prop)(target)
+})
+
+export default decoratedTwilight

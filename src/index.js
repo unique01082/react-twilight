@@ -1,10 +1,12 @@
 import { ThemeConsumer } from 'styled-components'
 import ThemeProvider from './ThemeProvider'
 import {
+  twilight,
   twilightMap,
   createStyleParser,
   createSelectorParser,
-  createVariantParser
+  createVariantParser,
+  twilightPragma
 } from './core'
 import withTwilight from './withTwilight'
 import { buildValues } from './utils'
@@ -43,5 +45,7 @@ export {
   addAllStyles,
   addAllSelectors,
   addAllVariants,
-  addAllCsses
+  addAllCsses,
+  twilightPragma,
+  twilight
 }
