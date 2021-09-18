@@ -2,7 +2,7 @@ import { ThemeConsumer } from 'styled-components'
 import ThemeProvider from './ThemeProvider'
 import {
   twilight,
-  twilightMap,
+  parsersManager,
   createStyleParser,
   createSelectorParser,
   createVariantParser,
@@ -18,7 +18,7 @@ import * as csses from './cssParsers'
 
 const addAll = (object) => {
   Object.keys(object).forEach((key) => {
-    twilightMap.register(object[key])
+    parsersManager.add(object[key])
   })
 }
 
@@ -27,14 +27,13 @@ const addAllSelectors = () => addAll(selectors)
 const addAllVariants = () => addAll(variants)
 const addAllCsses = () => addAll(csses)
 
-const getTwilightMap = () => twilightMap
+window.parsersManager = parsersManager
 
-window.twilightMap = twilightMap
+window.styles = styles
 
 export {
   ThemeProvider,
   ThemeConsumer,
-  getTwilightMap,
   createStyleParser,
   createSelectorParser,
   createVariantParser,
@@ -47,5 +46,6 @@ export {
   addAllVariants,
   addAllCsses,
   twilightPragma,
-  twilight
+  twilight,
+  parsersManager
 }

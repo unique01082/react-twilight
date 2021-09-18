@@ -1,7 +1,7 @@
 import isPlainObject from 'lodash-es/isPlainObject'
 import merge from 'lodash-es/merge'
 
-import { twilightMap } from '../core'
+import { parsersManager } from '../core'
 
 const cssParser = ({ css, theme }) => {
   if (!css || !isPlainObject(css)) return
@@ -10,8 +10,8 @@ const cssParser = ({ css, theme }) => {
     (acc, key) =>
       merge(
         acc,
-        twilightMap.has(key)
-          ? twilightMap.get(key)(css, theme)
+        parsersManager.has(key)
+          ? parsersManager.get(key)(css, theme)
           : { [key]: css[key] }
       ),
     {}

@@ -3,16 +3,16 @@ import merge from 'lodash-es/merge'
 import intersection from 'lodash-es/intersection'
 import difference from 'lodash-es/difference'
 
-import { twilightMap } from '.'
+import { parsersManager } from '.'
 
 const twilight = (props, theme = props.theme) => {
   const propsToProcess = difference(
-    intersection(Object.keys(props), Array.from(twilightMap.keys())),
+    intersection(Object.keys(props), parsersManager.getSupportedProps()),
     props.ignoreProps
   )
 
   const result = propsToProcess.reduce(
-    (acc, prop) => merge(acc, twilightMap.get(prop)(props, theme)),
+    (acc, prop) => merge(acc, parsersManager.get(prop)(props, theme)),
     {}
   )
 

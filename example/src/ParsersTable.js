@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Button, Table } from 'antd'
 import Column from 'antd/lib/table/Column'
 import kebabCase from 'lodash/kebabCase'
-import { getTwilightMap, ThemeConsumer } from 'react-twilight'
+import { parsersManager, ThemeConsumer } from 'react-twilight'
 
 import { useMount } from 'ahooks'
 
@@ -11,9 +11,7 @@ const PropsTable = () => {
   const [selectorParsers, setSelectorParsers] = useState([])
   const [variantParsers, setVariantParsers] = useState([])
   useMount(() => {
-    const p = new Set()
-    getTwilightMap().forEach((v) => p.add(v))
-    const parsers = Array.from(p)
+    const parsers = Array.from(parsersManager)
     setStyleParsers(parsers.filter((parser) => parser._type === 'style'))
     setSelectorParsers(parsers.filter((parser) => parser._type === 'selector'))
     setVariantParsers(parsers.filter((parser) => parser._type === 'variant'))

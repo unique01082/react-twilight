@@ -1,5 +1,5 @@
 import React from 'react'
-import { withTwilight, getTwilightMap } from 'react-twilight'
+import { parsersManager, withTwilight } from 'react-twilight'
 import { Button, Collapse } from 'antd'
 import { useUpdate } from 'ahooks'
 
@@ -210,7 +210,7 @@ const Playground = () => {
         <Button
           onClick={() => {
             update()
-            console.log('twilightMap :>> ', getTwilightMap())
+            console.log('twilightMap :>> ', parsersManager)
           }}
         >
           Rerender {Date.now()}

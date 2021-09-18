@@ -11,8 +11,8 @@ import {
   addAllVariants,
   addAllCsses,
   createVariantParser,
-  getTwilightMap,
-  createStyleParser
+  createStyleParser,
+  parsersManager
 } from 'react-twilight'
 import defaultTheme from './defaultTheme'
 // import tailwindcssTheme from './tailwindcssTheme'
@@ -26,8 +26,8 @@ addAllCsses()
 const fontSizeVariantParser = createVariantParser('textSize')
 const objectFitStyleParser = createStyleParser('objectFit')
 
-getTwilightMap().register(fontSizeVariantParser)
-getTwilightMap().register(objectFitStyleParser)
+parsersManager.add(fontSizeVariantParser)
+parsersManager.add(objectFitStyleParser)
 
 ReactDOM.render(
   <ThemeProvider theme={defaultTheme}>

@@ -84,3 +84,8 @@ export const selection = createSelectorParser({
   propNames: 'whileSelection',
   properties: '::selection'
 })
+
+export const group = createSelectorParser({
+  propNames: 'whileGroup',
+  properties: '--group'
+})

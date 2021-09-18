@@ -9,22 +9,30 @@ export default function createSelectorParser(input) {
   const { propNames, properties } = normalizeInput(input)
 
   const selectorParser = (props) => {
+    console.log(Object.keys(props), selectorParser.propNames)
     const propsToProcess = difference(
-      intersection(Object.keys(props), propNames),
+      intersection(Object.keys(props), selectorParser.propNames),
       props.ignoreProps
     )
+
+    console.log('propsToProcess :>> ', propsToProcess)
 
     const result = propsToProcess.reduce(
       (acc, prop) => Object.assign(acc, twilight(props[prop], props.theme)),
       {}
     )
 
+    console.log('result :>> ', result)
+
     let caculatedProperties
-    if (typeof properties === 'function') {
-      caculatedProperties = [properties(props)]
+    if (typeof selectorParser.properties === 'function') {
+      caculatedProperties = [selectorParser.properties(props)]
     }
 
-    return toStyledObject(result, caculatedProperties ?? properties)
+    return toStyledObject(
+      result,
+      caculatedProperties ?? selectorParser.properties
+    )
   }
 
   selectorParser.propNames = propNames

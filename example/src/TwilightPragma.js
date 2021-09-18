@@ -1,12 +1,11 @@
 /** @jsx twilightPragma */
 import { twilightPragma } from 'react-twilight'
 
-const TwilightPragma = () => {
-  return (
+const TwilightPragma = () => (
+  <div display='flex' algnItems='center' justifyContent='center'>
     <h1
       c='red'
       border='1px solid red'
-      w='25%'
       p={16}
       my={16}
       mx='auto'
@@ -14,7 +13,18 @@ const TwilightPragma = () => {
     >
       Hello world zzz
     </h1>
-  )
-}
+    <button
+      c='red'
+      border='1px solid red'
+      bg='#f002'
+      p={16}
+      my={16}
+      mx='auto'
+      textAlign='center'
+    >
+      Click
+    </button>
+  </div>
+)
 
 export default TwilightPragma

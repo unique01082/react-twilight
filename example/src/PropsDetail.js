@@ -2,11 +2,11 @@ import { useMount, useToggle } from 'ahooks'
 import { Button, Modal, Descriptions } from 'antd'
 import React, { useState } from 'react'
 import { kebabCase } from 'lodash'
-import { ThemeConsumer, getTwilightMap } from 'react-twilight'
+import { ThemeConsumer, parsersManager } from 'react-twilight'
 
 const getParser = (property) => {
   const parsers = new Set()
-  Array.from(getTwilightMap().values()).forEach((parser) => {
+  parsersManager.forEach((parser) => {
     if (
       parser._type === 'style' &&
       parser.properties.map(kebabCase).includes(property)

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Table, Tag } from 'antd'
 import Column from 'antd/lib/table/Column'
 import { useMount, useRequest } from 'ahooks'
-import { getTwilightMap } from 'react-twilight'
+import { parsersManager } from 'react-twilight'
 import kebabCase from 'lodash/kebabCase'
 
 import { PROPERTY_STATUS_OS, values, clear, set } from './db'
@@ -22,7 +22,7 @@ const setup = () =>
 
 const getSupportedProperties = () => {
   const result = new Set()
-  getTwilightMap().forEach((fn, key) => {
+  parsersManager.forEach((fn) => {
     if (fn._type === 'style') {
       fn.properties.forEach((r) => result.add(kebabCase(r)))
     }
