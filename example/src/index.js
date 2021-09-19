@@ -5,7 +5,6 @@ import 'antd/dist/antd.css'
 import App from './App'
 import './index.css'
 import {
-  ThemeProvider,
   addAllStyles,
   addAllSelectors,
   addAllVariants,
@@ -14,7 +13,6 @@ import {
   createStyleParser,
   parsersManager
 } from 'react-twilight'
-import defaultTheme from './defaultTheme'
 // import tailwindcssTheme from './tailwindcssTheme'
 // console.log('tailwindcssTheme :>> ', tailwindcssTheme)
 
@@ -29,9 +27,4 @@ const objectFitStyleParser = createStyleParser('objectFit')
 parsersManager.add(fontSizeVariantParser)
 parsersManager.add(objectFitStyleParser)
 
-ReactDOM.render(
-  <ThemeProvider theme={defaultTheme}>
-    <App />
-  </ThemeProvider>,
-  document.getElementById('root')
-)
+ReactDOM.render(<App />, document.getElementById('root'))

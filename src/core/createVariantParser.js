@@ -7,12 +7,10 @@ import normalizeInput from './normalizeInput'
 import twilight from './twilight'
 
 export default function createVariantParser(input) {
-  const { propNames, scaleName } = normalizeInput(input)
-
   const selectorParser = (props, theme = props.theme) => {
     const { _breakpointsMap } = theme
     const propsToProcess = difference(
-      intersection(Object.keys(props), propNames),
+      intersection(Object.keys(props), selectorParser.propNames),
       props.ignoreProps
     )
 
@@ -22,13 +20,15 @@ export default function createVariantParser(input) {
       if (typeof rawValue === 'string' || typeof rawValue === 'number') {
         return Object.assign(
           acc,
-          twilight(props.theme[scaleName][rawValue], props.theme)
+          twilight(props.theme[selectorParser.scaleName][rawValue], props.theme)
         )
       }
       if (Array.isArray(rawValue)) {
         const values = rawValue
           .slice(0, _breakpointsMap.length)
-          .map((value) => twilight(props.theme[scaleName][value], props.theme))
+          .map((value) =>
+            twilight(props.theme[selectorParser.scaleName][value], props.theme)
+          )
 
         return values.reduce((acc, value, index) => {
           if (isNil(value)) return acc
@@ -40,7 +40,7 @@ export default function createVariantParser(input) {
       if (isPlainObject(rawValue)) {
         return Object.keys(rawValue).reduce((acc, key) => {
           const value = twilight(
-            props.theme[scaleName][rawValue[key]],
+            props.theme[selectorParser.scaleName][rawValue[key]],
             props.theme
           )
           if (isNil(value)) return acc
@@ -56,9 +56,8 @@ export default function createVariantParser(input) {
     return result
   }
 
-  selectorParser.propNames = propNames
-  selectorParser.scaleName = scaleName
-  selectorParser._type = 'variant'
+  const { propNames, scaleName } = normalizeInput(input)
+  Object.assign(selectorParser, { propNames, scaleName, _type: 'variant' })
 
   return selectorParser
 }

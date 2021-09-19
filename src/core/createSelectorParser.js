@@ -6,23 +6,16 @@ import normalizeInput from './normalizeInput'
 import toStyledObject from './toStyledObject'
 
 export default function createSelectorParser(input) {
-  const { propNames, properties } = normalizeInput(input)
-
   const selectorParser = (props) => {
-    console.log(Object.keys(props), selectorParser.propNames)
     const propsToProcess = difference(
       intersection(Object.keys(props), selectorParser.propNames),
       props.ignoreProps
     )
 
-    console.log('propsToProcess :>> ', propsToProcess)
-
-    const result = propsToProcess.reduce(
-      (acc, prop) => Object.assign(acc, twilight(props[prop], props.theme)),
-      {}
-    )
-
-    console.log('result :>> ', result)
+    const result = propsToProcess.reduce((acc, prop) => {
+      const r = Object.assign(acc, twilight(props[prop], props.theme))
+      return r
+    }, {})
 
     let caculatedProperties
     if (typeof selectorParser.properties === 'function') {
@@ -35,9 +28,8 @@ export default function createSelectorParser(input) {
     )
   }
 
-  selectorParser.propNames = propNames
-  selectorParser.properties = properties
-  selectorParser._type = 'selector'
+  const { propNames, properties } = normalizeInput(input)
+  Object.assign(selectorParser, { propNames, properties, _type: 'selector' })
 
   return selectorParser
 }

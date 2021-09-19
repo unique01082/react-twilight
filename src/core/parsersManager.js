@@ -48,6 +48,11 @@ class TwilightSet extends Set {
   getSupportedProps() {
     return Array.from(this._parsersMap.keys())
   }
+
+  refreshReferancesMap() {
+    this._parsersMap.clear()
+    this.forEach((parser) => this.add(parser))
+  }
 }
 
 const parsersManager = new TwilightSet()

@@ -1,7 +1,6 @@
 import React from 'react'
 import { parsersManager, withTwilight } from 'react-twilight'
 import { Button, Collapse } from 'antd'
-import { useUpdate } from 'ahooks'
 
 const { Panel } = Collapse
 
@@ -15,11 +14,7 @@ const Ol = withTwilight('ol')
 const P = withTwilight('p')
 // const SubHeading = withTwilight(Component)
 
-console.log(Box, <Box c='red' />)
-
 const Playground = () => {
-  const update = useUpdate()
-
   return (
     <Collapse
       defaultActiveKey={['11']}
@@ -209,13 +204,16 @@ const Playground = () => {
       <Panel header='Basic' key='11'>
         <Button
           onClick={() => {
-            update()
+            parsersManager.get('c').propNames = ['zz']
+            parsersManager.get('whileHover').propNames = ['whileHover', 'hover']
+            parsersManager.refreshReferancesMap()
             console.log('twilightMap :>> ', parsersManager)
           }}
         >
           Rerender {Date.now()}
         </Button>
         <Heading
+          data-group='abc'
           // css={{ color: 'blue', '--abc': 123 }}
           // m='auto'
           // p={32}
@@ -227,14 +225,14 @@ const Playground = () => {
           // fontWeight='700'
           // bg='#88d0ff80'
           // hover={{ fontWeight: 900, color: 'red', opacity: 4, textAlign: 'center' }}
-          // color='blue.light'
+          color='blue.light'
           // color={['blue.light', 'blue', 'blue.dark']}
           // color={{ _default: 'blue.light', s: 'blue', m: 'blue.dark' }}
           // bg='blue.light'
           // bg={['blue.light', 'blue', 'blue.dark']}
           // whileHover={{ color: 'blue' }}
           group='abc'
-          whileHover2={{ c: 'red' }}
+          hover={{ zz: 'green' }}
           // whileHover={{ color: ['green', 'pink', 'red'] }}
           // hover={{
           //   color: { _default: 'green', s: 'pink', m: 'red' }
@@ -254,6 +252,7 @@ const Playground = () => {
           // opacity={3}
         >
           Hello world!
+          <Heading groupHover>def</Heading>
         </Heading>
       </Panel>
     </Collapse>
