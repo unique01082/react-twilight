@@ -1,7 +1,7 @@
 {
   "name": "react-twilight",
-  "version": "1.0.0",
-  "description": "Made with create-react-library",
+  "version": "0.1.0",
+  "description": "Same as styled-system, but central manage and added a lot of abilities",
   "author": "unique01082",
   "license": "MIT",
   "repository": "unique01082/react-twilight",

@@ -19,9 +19,12 @@ const twilight = (props, theme = props.theme) => {
   return result
 }
 
-const decoratedTwilight = new Proxy(twilight, {
-  apply: Reflect.apply,
-  get: (target, prop) => styled(prop)(target)
-})
+export const tl = new Proxy(
+  {},
+  {
+    apply: Reflect.apply,
+    get: (target, prop) => styled(prop)(twilight)
+  }
+)
 
-export default decoratedTwilight
+export default twilight

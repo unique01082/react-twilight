@@ -86,6 +86,6 @@ export const selection = createSelectorParser({
 })
 
 export const group = createSelectorParser({
-  propNames: 'whileGroup',
-  properties: '--group'
+  propNames: 'whileGroupHover',
+  properties: ({ group }) => `[data-group=${group}]:hover &`
 })

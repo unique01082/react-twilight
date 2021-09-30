@@ -2,6 +2,7 @@ import { ThemeConsumer } from 'styled-components'
 import ThemeProvider from './ThemeProvider'
 import {
   twilight,
+  tl,
   parsersManager,
   createStyleParser,
   createSelectorParser,
@@ -27,10 +28,6 @@ const addAllSelectors = () => addAll(selectors)
 const addAllVariants = () => addAll(variants)
 const addAllCsses = () => addAll(csses)
 
-window.parsersManager = parsersManager
-
-window.styles = styles
-
 export {
   ThemeProvider,
   ThemeConsumer,
@@ -47,5 +44,6 @@ export {
   addAllCsses,
   twilightPragma,
   twilight,
-  parsersManager
+  parsersManager,
+  tl
 }

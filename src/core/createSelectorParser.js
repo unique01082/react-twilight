@@ -6,14 +6,14 @@ import normalizeInput from './normalizeInput'
 import toStyledObject from './toStyledObject'
 
 export default function createSelectorParser(input) {
-  const selectorParser = (props) => {
+  const selectorParser = (props, theme = props.theme) => {
     const propsToProcess = difference(
       intersection(Object.keys(props), selectorParser.propNames),
       props.ignoreProps
     )
 
     const result = propsToProcess.reduce((acc, prop) => {
-      const r = Object.assign(acc, twilight(props[prop], props.theme))
+      const r = Object.assign(acc, twilight(props[prop], theme))
       return r
     }, {})
 

@@ -1,6 +1,6 @@
 # react-twilight
 
-> Made with create-react-library
+> Same as **styled-system**, but central manage and added a lot of abilities
 
 [![NPM](https://img.shields.io/npm/v/react-twilight.svg)](https://www.npmjs.com/package/react-twilight) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
@@ -13,16 +13,36 @@ npm install --save react-twilight
 ## Usage
 
 ```jsx
-import React, { Component } from 'react'
+import {
+  ThemeProvider,
+  ThemeConsumer,
+  createStyleParser,
+  createSelectorParser,
+  createVariantParser,
+  withTwilight,
+  buildValues,
+  styles,
+  csses,
+  addAllStyles,
+  addAllSelectors,
+  addAllVariants,
+  addAllCsses,
+  twilightPragma,
+  twilight,
+  parsersManager,
+  tl
+} from 'react-twilight'
 
-import MyComponent from 'react-twilight'
-import 'react-twilight/dist/index.css'
+addAllStyles()
+addAllSelectors()
+addAllVariants()
+addAllCsses()
 
-class Example extends Component {
-  render() {
-    return <MyComponent />
-  }
-}
+const fontSizeVariantParser = createVariantParser('textSize')
+const objectFitStyleParser = createStyleParser('objectFit')
+
+parsersManager.add(fontSizeVariantParser)
+parsersManager.add(objectFitStyleParser)
 ```
 
 ## License

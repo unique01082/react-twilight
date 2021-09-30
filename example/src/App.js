@@ -7,7 +7,7 @@ import {
   useLocation
 } from 'react-router-dom'
 import { useUpdate } from 'ahooks'
-import { ThemeProvider } from 'react-twilight'
+import { ThemeProvider, withTwilight } from 'react-twilight'
 import { Button } from 'antd'
 
 import Playgound from './Playgound'
@@ -18,6 +18,8 @@ import Sample2 from './Sample2'
 import TwilightPragma from './TwilightPragma'
 import TwilightFactory from './TwilightFactory'
 import defaultTheme from './defaultTheme'
+
+const Box = withTwilight('div')
 
 const Menu = ({ menu }) => {
   const { pathname } = useLocation()
@@ -88,7 +90,7 @@ function App(props) {
             <TwilightFactory />
           </Route>
           <Route path='/'>
-            <h1>Home!</h1>
+            <Box as='h1'>Home!</Box>
           </Route>
         </Switch>
       </Router>

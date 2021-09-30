@@ -17,21 +17,30 @@ const P = withTwilight('p')
 const Playground = () => {
   return (
     <Collapse
-      defaultActiveKey={['11']}
+      defaultActiveKey={['2']}
       destroyInactivePanel
       expandIconPosition='right'
     >
       <Panel header='Group' key='1'>
         <Box
           m={32}
-          // p={12}
+          p={12}
           // whileGroup='abc'
-          // whileHover={{ bg: '#000c', border: '1px solid red' }}
+          whileHover={{ bg: '#000c', border: '1px solid red' }}
+          data-group='test'
+          className='abc'
         >
-          <P fontSize={20} whileGroupHover={{ color: '#fffc' }}>
+          <P
+            // fontSize={20}
+            group='test'
+            whileGroupHover={{ color: '#f00c' }}
+          >
             New Project
           </P>
-          <P whileGroupHover={{ color: '#fff9' }}>
+          <P
+            group='test'
+            // whileGroup={{ whileHover: { color: '#fff9' } }}
+          >
             Create a new project from a variety of starting templates.
           </P>
         </Box>
@@ -213,7 +222,8 @@ const Playground = () => {
           Rerender {Date.now()}
         </Button>
         <Heading
-          data-group='abc'
+          margin={4}
+          // data-group='abc'
           // css={{ color: 'blue', '--abc': 123 }}
           // m='auto'
           // p={32}
@@ -225,14 +235,14 @@ const Playground = () => {
           // fontWeight='700'
           // bg='#88d0ff80'
           // hover={{ fontWeight: 900, color: 'red', opacity: 4, textAlign: 'center' }}
-          color='blue.light'
-          // color={['blue.light', 'blue', 'blue.dark']}
+          // color='blue.light'
+          color={['blue.light', 'blue', 'blue.dark']}
           // color={{ _default: 'blue.light', s: 'blue', m: 'blue.dark' }}
           // bg='blue.light'
-          // bg={['blue.light', 'blue', 'blue.dark']}
+          bg={['blue', 'blue.dark', 'blue.light']}
           // whileHover={{ color: 'blue' }}
-          group='abc'
-          hover={{ zz: 'green' }}
+          // group='abc'
+          // hover={{ zz: 'green' }}
           // whileHover={{ color: ['green', 'pink', 'red'] }}
           // hover={{
           //   color: { _default: 'green', s: 'pink', m: 'red' }
@@ -252,7 +262,7 @@ const Playground = () => {
           // opacity={3}
         >
           Hello world!
-          <Heading groupHover>def</Heading>
+          {/* <Heading groupHover>def</Heading> */}
         </Heading>
       </Panel>
     </Collapse>

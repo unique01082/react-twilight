@@ -1,9 +1,9 @@
 import React from 'react'
-import { twilight } from 'react-twilight'
+import { tl } from 'react-twilight'
 
 const TwilightFactory = () => (
-  <twilight.div display='flex' algnItems='center' justifyContent='center'>
-    <twilight.h1
+  <tl.div display='flex' algnItems='center' justifyContent='center'>
+    <tl.h1
       c='red'
       border='1px solid red'
       p={16}
@@ -12,8 +12,8 @@ const TwilightFactory = () => (
       textAlign='center'
     >
       Hello world zzz
-    </twilight.h1>
-    <twilight.button
+    </tl.h1>
+    <tl.button
       c='red'
       border='1px solid red'
       bg='#f002'
@@ -23,8 +23,8 @@ const TwilightFactory = () => (
       textAlign='center'
     >
       Click
-    </twilight.button>
-  </twilight.div>
+    </tl.button>
+  </tl.div>
 )
 
 export default TwilightFactory
