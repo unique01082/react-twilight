@@ -10,6 +10,23 @@
 npm install --save react-twilight
 ```
 
+## Installation
+
+### Wrap application by ThemeProvider
+
+```jsx
+import { ThemeProvider } from "react-twilight";
+import theme from './theme'
+
+export default function App() {
+  return (
+    <ThemeProvider theme={theme}>
+      {// omitted}
+    </ThemeProvider>
+  );
+}
+```
+
 ## Usage
 
 ```jsx

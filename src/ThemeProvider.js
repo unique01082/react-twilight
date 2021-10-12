@@ -15,7 +15,7 @@ function createMediaQuery(n) {
 
 const ThemeProvider = ({
   theme,
-  theme: { breakpoints },
+  theme: { breakpoints = [] },
   buildMediaQuery = createMediaQuery,
   ...restProps
 }) => {
