@@ -1,12 +1,15 @@
-import pluralize from 'pluralize'
 import isPlainObject from 'lodash-es/isPlainObject'
+import pluralize from 'pluralize'
+import type { Configuration, RawConfiguration } from '../type'
 import { get } from '../utils'
 
-function defaultTransform(value, scale) {
+function defaultTransform(value: any, scale: object | any[]): any {
   return get(scale, value, value)
 }
 
-export default function normalizeInput(config) {
+export default function normalizeInput(
+  config: RawConfiguration
+): Configuration {
   if (!config) throw new Error('Config object required')
 
   if (typeof config === 'string') {
@@ -19,14 +22,17 @@ export default function normalizeInput(config) {
   }
 
   if (Array.isArray(config)) {
+    const [firstItem] = config
     if (config.length === 0) throw new Error('Empty array. Expected an item')
-    if (!config[0] || typeof config[0] !== 'string')
-      throw new Error('Invalid data type of the first item. Expected a string')
+    if (!firstItem || typeof firstItem !== 'string')
+      throw new Error(
+        `Invalid data type of the first item. Expected a string but received ${firstItem}`
+      )
 
     return {
       propNames: config,
-      properties: [config[0]],
-      scaleName: pluralize(config[0]),
+      properties: [firstItem],
+      scaleName: pluralize(firstItem),
       transform: defaultTransform
     }
   }
@@ -45,8 +51,9 @@ export default function normalizeInput(config) {
       properties = [properties]
     }
 
+    // @ts-ignore
     return { propNames, properties, scaleName, defaultScale, transform }
   }
 
-  return config
+  throw new Error('Invalid configuration')
 }

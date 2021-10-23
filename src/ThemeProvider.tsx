@@ -1,14 +1,22 @@
 import React from 'react'
 import { ThemeProvider as ScThemeProvider } from 'styled-components'
 
-function parseValue(value) {
+type ThemeProviderProps = {
+  theme: {
+    breakpoints: string[] | number[]
+  }
+  buildMediaQuery?: (n: number | string) => string | undefined
+  children: React.ReactNode
+}
+
+function parseValue(value: string | number): string {
   if (typeof value === 'number') {
     return `${value}px`
   }
   return value
 }
 
-function createMediaQuery(n) {
+function createMediaQuery(n: string | number) {
   if (!n) return
   return `@media screen and (min-width: ${parseValue(n)})`
 }
@@ -18,7 +26,8 @@ const ThemeProvider = ({
   theme: { breakpoints = [] },
   buildMediaQuery = createMediaQuery,
   ...restProps
-}) => {
+}: ThemeProviderProps) => {
+  // @ts-ignore
   breakpoints.unshift(undefined)
 
   return (

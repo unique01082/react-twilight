@@ -1,17 +1,18 @@
 import isPlainObject from 'lodash-es/isPlainObject'
 import merge from 'lodash-es/merge'
-
 import { parsersManager } from '../core'
+import { Parser } from '../type'
 
-const cssParser = ({ css, theme }) => {
-  if (!css || !isPlainObject(css)) return
+const cssParser: Parser = ({ css, theme }) => {
+  if (!css || !isPlainObject(css)) return {}
 
   return Object.keys(css).reduce(
     (acc, key) =>
       merge(
         acc,
         parsersManager.has(key)
-          ? parsersManager.get(key)(css, theme)
+          ? // @ts-ignore checked with has()
+            parsersManager.get(key)(css, theme)
           : { [key]: css[key] }
       ),
     {}
@@ -19,6 +20,6 @@ const cssParser = ({ css, theme }) => {
 }
 
 cssParser.propNames = ['css']
-cssParser._type = 'css'
+cssParser._type = 'css' as const
 
 export { cssParser }

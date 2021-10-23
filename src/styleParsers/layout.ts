@@ -2,6 +2,7 @@ import isNumber from 'lodash-es/isNumber'
 import { createStyleParser } from '../core'
 import { get } from '../utils'
 
+// @ts-ignore
 const getWidth = (n, scale) =>
   get(scale, n, !isNumber(n) || n > 1 ? n : n * 100 + '%')
 
