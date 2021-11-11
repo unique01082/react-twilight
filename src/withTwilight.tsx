@@ -1,5 +1,5 @@
-import styled from 'styled-components'
+import styled, { AnyStyledComponent } from 'styled-components'
 import core from './core'
 
-// @ts-ignore
-export default (Component: JSX.Element | string) => styled(Component)(core)
+export default (Component: any) =>
+  styled(Component as AnyStyledComponent)(core as any)
