@@ -75,16 +75,6 @@ export const placeholder = createSelectorParser({
   properties: ':placeholder'
 })
 
-export const marker = createSelectorParser({
-  propNames: 'whileMarker',
-  properties: '>::marker'
-})
-
-export const selection = createSelectorParser({
-  propNames: 'whileSelection',
-  properties: '::selection'
-})
-
 export const group = createSelectorParser({
   propNames: 'whileGroupHover',
   properties: ({ group }) => `[data-group=${group}]:hover &`

@@ -80,12 +80,12 @@ const Playground = () => {
         </Box>
       </Panel>
       <Panel header='Marker' key='3'>
-        <Ul whileMarker={{ color: 'red' }}>
+        <Ul withParentMarker={{ color: 'red' }}>
           <li>Coffee</li>
           <li>Tea</li>
           <li>Milk</li>
         </Ul>
-        <Ol whileMarker={{ color: 'yellow' }}>
+        <Ol withParentMarker={{ color: 'yellow' }}>
           <li>First</li>
           <li>Second</li>
           <li>Third</li>
