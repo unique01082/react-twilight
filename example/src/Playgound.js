@@ -12,12 +12,13 @@ const Form = withTwilight('form')
 const Ul = withTwilight('ul')
 const Ol = withTwilight('ol')
 const P = withTwilight('p')
+const Svg = withTwilight('svg')
 // const SubHeading = withTwilight(Component)
 
 const Playground = () => {
   return (
     <Collapse
-      defaultActiveKey={['2']}
+      defaultActiveKey={['11']}
       destroyInactivePanel
       expandIconPosition='right'
     >
@@ -221,12 +222,28 @@ const Playground = () => {
         >
           Rerender {Date.now()}
         </Button>
+        <Svg
+          width='24'
+          height='40'
+          fill='currentColor'
+          ignoreProps={['width', 'height', 'fill']}
+          mr={2}
+          color='lightBlue.500'
+          class='group-hover:text-light-blue-600'
+        >
+          <path
+            fill-rule='evenodd'
+            clip-rule='evenodd'
+            d='M6 5a1 1 0 011 1v3h3a1 1 0 110 2H7v3a1 1 0 11-2 0v-3H2a1 1 0 110-2h3V6a1 1 0 011-1z'
+          ></path>
+        </Svg>
         <Heading
-          margin={4}
+          // withBefore={{ content: 'abc', color: 'red' }}
+          // margin={4}
           // data-group='abc'
           // css={{ color: 'blue', '--abc': 123 }}
           // m='auto'
-          // p={32}
+          p={32}
           // size={300}
           // borderY='5px solid red'
           // borderX='10px solid orange'
@@ -235,11 +252,11 @@ const Playground = () => {
           // fontWeight='700'
           // bg='#88d0ff80'
           // hover={{ fontWeight: 900, color: 'red', opacity: 4, textAlign: 'center' }}
-          // color='blue.light'
-          color={['blue.light', 'blue', 'blue.dark']}
+          color='blue.light'
+          // color={['blue.light', 'blue', 'blue.dark']}
           // color={{ _default: 'blue.light', s: 'blue', m: 'blue.dark' }}
           // bg='blue.light'
-          bg={['blue', 'blue.dark', 'blue.light']}
+          // bg={['blue', 'blue.dark', 'blue.light']}
           // whileHover={{ color: 'blue' }}
           // group='abc'
           // hover={{ zz: 'green' }}

@@ -1,7 +1,7 @@
 import difference from 'lodash-es/difference'
 import intersection from 'lodash-es/intersection'
 import merge from 'lodash-es/merge'
-import styled from 'styled-components'
+import styled from '@baolq/styled-components'
 import { parsersManager } from '.'
 
 const twilight = (

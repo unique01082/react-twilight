@@ -1,4 +1,4 @@
-import { ThemeConsumer } from 'styled-components'
+import { ThemeConsumer } from '@baolq/styled-components'
 import {
   createSelectorParser,
   createStyleParser,

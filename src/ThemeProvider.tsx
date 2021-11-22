@@ -1,5 +1,7 @@
+// @ts-nocheck
+// eslint-disable-next-line no-use-before-define
 import React from 'react'
-import { ThemeProvider as ScThemeProvider } from 'styled-components'
+import { ThemeProvider as ScThemeProvider } from '@baolq/styled-components'
 
 type ThemeProviderProps = {
   theme: {

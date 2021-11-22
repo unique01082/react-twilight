@@ -41,9 +41,13 @@ class ParsersSet<P extends Parser> extends Set<P> {
     return result
   }
 
+  isPropSupported(prop: string): boolean {
+    return this._parsersMap.has(prop)
+  }
+
   has(parser: string | P): boolean {
     if (typeof parser === 'string') {
-      return this._parsersMap.has(parser)
+      return this.isPropSupported(parser)
     }
     return super.has(parser)
   }

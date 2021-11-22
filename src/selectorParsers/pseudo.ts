@@ -22,7 +22,7 @@ export const firstLetter = createSelectorParser({
 
 export const before = createSelectorParser({
   propNames: 'withBefore',
-  properties: '::before'
+  properties: '>::before'
 })
 
 export const after = createSelectorParser({

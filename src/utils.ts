@@ -8,10 +8,10 @@ export const get = (obj: object, path: string | any[], defaultValue: any) =>
   _get(_get(obj, path), DEFAULT_KEY, _get(obj, path, defaultValue))
 
 export const buildValues = (
-  array = [],
-  aliases: object,
-  defaultValue: object,
-  otherValues: object
+  array: Array<any> = [],
+  aliases?: object,
+  defaultValue?: object,
+  otherValues?: object
 ) =>
   _merge(
     array,
