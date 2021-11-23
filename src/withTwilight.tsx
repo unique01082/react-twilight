@@ -6,28 +6,13 @@ interface Props {
 }
 
 interface ShouldForwardProp {
-  (
-    prop: string,
-    props: Props,
-    defaultValidatorFn: (prop: string) => boolean
-  ): boolean
+  (prop: string, props: Props): boolean
 }
 
 // true => pass to component
 // false => skip
-const shouldForwardProp: ShouldForwardProp = (
-  prop,
-  { ignoreProps = [] },
-  defaultValidatorFn
-) => {
-  if (ignoreProps.includes(prop)) {
-    return true
-  }
-  if (parsersManager.isPropSupported(prop)) {
-    return false
-  }
-  return defaultValidatorFn(prop)
-}
+const shouldForwardProp: ShouldForwardProp = (prop, { ignoreProps = [] }) =>
+  !(!ignoreProps.includes(prop) && parsersManager.isPropSupported(prop))
 
 export default (Component: any) =>
   styled(Component).withConfig({
