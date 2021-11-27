@@ -20,7 +20,7 @@ export default function createVariantParser(
     const result = propsToProcess.reduce((acc, prop) => {
       const rawValue = props[prop]
 
-      if (typeof rawValue === 'string' || typeof rawValue === 'number') {
+      if (['string', 'number', 'boolean', 'symbol'].includes(typeof rawValue)) {
         return Object.assign(
           acc,
           // @ts-ignore because styled will be assigned value in return
