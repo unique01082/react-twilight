@@ -1,14 +1,23 @@
 {
   "name": "react-twilight",
-  "version": "0.5.3-beta",
+  "version": "0.5.3-rc",
   "description": "Same as styled-system, but central manage and added a lot of abilities",
   "author": "unique01082",
   "license": "MIT",
   "repository": "unique01082/react-twilight",
   "type": "module",
-  "main": "dist/react-twilight.cjs.js",
+  "main": "dist/react-twilight.umd.js",
   "module": "dist/react-twilight.es.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/react-twilight.es.js",
+      "require": "./dist/dist/react-twilight.umd.js"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -24,7 +33,9 @@
   },
   "dependencies": {
     "lodash-es": "^4.17.21",
-    "pluralize": "^8.0.0"
+    "pluralize": "^8.0.0",
+    "react": "^18.2.0",
+    "styled-components": "5.3.10"
   },
   "peerDependencies": {
     "react": "^18.2.0",
