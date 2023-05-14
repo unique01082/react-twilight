@@ -5,5 +5,5 @@ export default function toStyledObject(
   return properties.reduce(
     (acc, property) => Object.assign(acc, { [property]: value }),
     {}
-  )
+  );
 }

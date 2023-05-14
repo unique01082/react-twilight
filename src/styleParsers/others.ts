@@ -1,4 +1,4 @@
-import { createStyleParser } from '../core'
+import { createStyleParser } from "../core";
 
-export const cursor = createStyleParser('cursor')
-export const content = createStyleParser('content')
+export const cursor = createStyleParser("cursor");
+export const content = createStyleParser("content");

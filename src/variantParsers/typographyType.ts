@@ -1,3 +1,3 @@
-import { createVariantParser } from '../core'
+import { createVariantParser } from "../core";
 
-export const typographyType = createVariantParser(['typographyType', 'tt'])
+export const typographyType = createVariantParser(["typographyType", "tt"]);

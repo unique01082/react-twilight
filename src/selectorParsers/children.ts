@@ -1,11 +1,11 @@
-import { createSelectorParser, generatePropertiesFn } from '../core'
+import { createSelectorParser, generatePropertiesFn } from "../core";
 
 export const allChildren = createSelectorParser({
-  propNames: 'allChildren',
-  properties: '> *'
-})
+  propNames: "allChildren",
+  properties: "> *",
+});
 
 export const select = createSelectorParser({
-  propNames: 'select',
-  properties: generatePropertiesFn('selector')
-})
+  propNames: "select",
+  properties: generatePropertiesFn("selector"),
+});

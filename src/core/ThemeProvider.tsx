@@ -1,28 +1,28 @@
-import React, { useMemo } from 'react'
-import { ThemeProvider as ScThemeProvider } from 'styled-components'
+import React, { useMemo } from "react";
+import { ThemeProvider as ScThemeProvider } from "styled-components";
 
 function parseValue(value: string | number): string {
-  if (typeof value === 'number') {
-    return `${value}px`
+  if (typeof value === "number") {
+    return `${value}px`;
   }
-  return value
+  return value;
 }
 
 function createMediaQuery(n: string | number) {
-  if (!n) return
-  return `@media screen and (min-width: ${parseValue(n)})`
+  if (!n) return;
+  return `@media screen and (min-width: ${parseValue(n)})`;
 }
 
 export interface TwilightTheme {
-  breakpoints: string[] | number[]
-  [key: string | number | symbol]: any
+  breakpoints: string[] | number[];
+  [key: string | number | symbol]: any;
 }
 
 interface ThemeProviderProps
   extends React.ComponentProps<typeof ScThemeProvider> {
-  theme: TwilightTheme
-  buildMediaQuery?: (n: number | string) => string | undefined
-  children?: React.ReactNode
+  theme: TwilightTheme;
+  buildMediaQuery?: (n: number | string) => string | undefined;
+  children?: React.ReactNode;
 }
 
 export const ThemeProvider = ({
@@ -33,7 +33,7 @@ export const ThemeProvider = ({
   ...restProps
 }: ThemeProviderProps) => {
   // @ts-ignore
-  breakpoints.unshift(undefined)
+  breakpoints.unshift(undefined);
 
   const normalizedTheme = useMemo(
     () =>
@@ -42,21 +42,21 @@ export const ThemeProvider = ({
           (acc, key) =>
             Object.assign(acc, {
               // @ts-ignore
-              [key]: [breakpoints[key], buildMediaQuery(breakpoints[key])]
+              [key]: [breakpoints[key], buildMediaQuery(breakpoints[key])],
             }),
           breakpoints
-        )
+        ),
       }),
     [theme]
-  )
+  );
 
   return (
     <ScThemeProvider {...restProps} theme={normalizedTheme}>
       {children}
     </ScThemeProvider>
-  )
-}
+  );
+};
 
 ThemeProvider.defaultProps = {
-  theme: {}
-}
+  theme: {},
+};

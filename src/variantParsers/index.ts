@@ -1,1 +1,1 @@
-export { typographyType } from './typographyType'
+export { typographyType } from "./typographyType";

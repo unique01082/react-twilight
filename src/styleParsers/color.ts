@@ -1,8 +1,8 @@
-import { createStyleParser } from '../core'
+import { createStyleParser } from "../core";
 
 export const color = createStyleParser({
-  propNames: ['color', 'c'],
-  properties: 'color',
-  scale: 'colorPalette'
-})
-export const opacity = createStyleParser('opacity')
+  propNames: ["color", "c"],
+  properties: "color",
+  scale: "colorPalette",
+});
+export const opacity = createStyleParser("opacity");

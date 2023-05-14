@@ -1,124 +1,124 @@
-import { createStyleParser } from '../core'
+import { createStyleParser } from "../core";
 
-export const border = createStyleParser('border')
-export const borderStyle = createStyleParser('borderStyle')
-export const borderWidth = createStyleParser('borderWidth')
+export const border = createStyleParser("border");
+export const borderStyle = createStyleParser("borderStyle");
+export const borderWidth = createStyleParser("borderWidth");
 export const borderColor = createStyleParser({
-  propNames: 'borderColor',
-  scale: 'colorPalette'
-})
+  propNames: "borderColor",
+  scale: "colorPalette",
+});
 
 export const borderRadius = createStyleParser({
-  propNames: 'borderRadius',
-  scale: 'radii'
-})
+  propNames: "borderRadius",
+  scale: "radii",
+});
 export const borderTop = createStyleParser({
-  propNames: 'borderTop',
-  scale: 'borders'
-})
+  propNames: "borderTop",
+  scale: "borders",
+});
 export const borderRight = createStyleParser({
-  propNames: 'borderRight',
-  scale: 'borders'
-})
+  propNames: "borderRight",
+  scale: "borders",
+});
 export const borderBottom = createStyleParser({
-  propNames: 'borderBottom',
-  scale: 'borders'
-})
+  propNames: "borderBottom",
+  scale: "borders",
+});
 export const borderLeft = createStyleParser({
-  propNames: 'borderLeft',
-  scale: 'borders'
-})
+  propNames: "borderLeft",
+  scale: "borders",
+});
 export const borderTopLeftRadius = createStyleParser({
-  propNames: 'borderTopLeftRadius',
-  scale: 'radii'
-})
+  propNames: "borderTopLeftRadius",
+  scale: "radii",
+});
 export const borderTopRightRadius = createStyleParser({
-  propNames: 'borderTopRightRadius',
-  scale: 'radii'
-})
+  propNames: "borderTopRightRadius",
+  scale: "radii",
+});
 export const borderBottomLeftRadius = createStyleParser({
-  propNames: 'borderBottomLeftRadius',
-  scale: 'radii'
-})
+  propNames: "borderBottomLeftRadius",
+  scale: "radii",
+});
 export const borderBottomRightRadius = createStyleParser({
-  propNames: 'borderBottomRightRadius',
-  scale: 'radii'
-})
+  propNames: "borderBottomRightRadius",
+  scale: "radii",
+});
 export const borderTopLeft = createStyleParser({
-  propNames: 'borderTopLeft',
-  properties: ['borderTop', 'borderLeft'],
-  scale: 'borders'
-})
+  propNames: "borderTopLeft",
+  properties: ["borderTop", "borderLeft"],
+  scale: "borders",
+});
 export const borderTopRight = createStyleParser({
-  propNames: 'borderTopRight',
-  properties: ['borderTop', 'borderRight'],
-  scale: 'borders'
-})
+  propNames: "borderTopRight",
+  properties: ["borderTop", "borderRight"],
+  scale: "borders",
+});
 export const borderBottomLeft = createStyleParser({
-  propNames: 'borderBottomLeft',
-  properties: ['borderBottom', 'borderLeft'],
-  scale: 'borders'
-})
+  propNames: "borderBottomLeft",
+  properties: ["borderBottom", "borderLeft"],
+  scale: "borders",
+});
 export const borderBottomRight = createStyleParser({
-  propNames: 'borderBottomRight',
-  properties: ['borderBottom', 'borderRight'],
-  scale: 'borders'
-})
+  propNames: "borderBottomRight",
+  properties: ["borderBottom", "borderRight"],
+  scale: "borders",
+});
 export const borderX = createStyleParser({
-  propNames: 'borderX',
-  properties: ['borderLeft', 'borderRight'],
-  scale: 'borders'
-})
+  propNames: "borderX",
+  properties: ["borderLeft", "borderRight"],
+  scale: "borders",
+});
 export const borderY = createStyleParser({
-  propNames: 'borderY',
-  properties: ['borderTop', 'borderBottom'],
-  scale: 'borders'
-})
+  propNames: "borderY",
+  properties: ["borderTop", "borderBottom"],
+  scale: "borders",
+});
 export const borderTopWidth = createStyleParser({
-  propNames: 'borderTopWidth',
-  scale: 'borderWidths'
-})
+  propNames: "borderTopWidth",
+  scale: "borderWidths",
+});
 export const borderTopColor = createStyleParser({
-  propNames: 'borderTopColor',
-  scale: 'colorPalette'
-})
+  propNames: "borderTopColor",
+  scale: "colorPalette",
+});
 export const borderTopStyle = createStyleParser({
-  propNames: 'borderTopStyle',
-  scale: 'borderStyles'
-})
+  propNames: "borderTopStyle",
+  scale: "borderStyles",
+});
 export const borderRightWidth = createStyleParser({
-  propNames: 'borderRightWidth',
-  scale: 'borderWidths'
-})
+  propNames: "borderRightWidth",
+  scale: "borderWidths",
+});
 export const borderRightColor = createStyleParser({
-  propNames: 'borderRightColor',
-  scale: 'colorPalette'
-})
+  propNames: "borderRightColor",
+  scale: "colorPalette",
+});
 export const borderRightStyle = createStyleParser({
-  propNames: 'borderRightStyle',
-  scale: 'borderStyles'
-})
+  propNames: "borderRightStyle",
+  scale: "borderStyles",
+});
 export const borderBottomWidth = createStyleParser({
-  propNames: 'borderBottomWidth',
-  scale: 'borderWidths'
-})
+  propNames: "borderBottomWidth",
+  scale: "borderWidths",
+});
 export const borderBottomColor = createStyleParser({
-  propNames: 'borderBottomColor',
-  scale: 'colorPalette'
-})
+  propNames: "borderBottomColor",
+  scale: "colorPalette",
+});
 export const borderBottomStyle = createStyleParser({
-  propNames: 'borderBottomStyle',
-  scale: 'borderStyles'
-})
+  propNames: "borderBottomStyle",
+  scale: "borderStyles",
+});
 export const borderLeftWidth = createStyleParser({
-  propNames: 'borderLeftWidth',
-  scale: 'borderWidths'
-})
+  propNames: "borderLeftWidth",
+  scale: "borderWidths",
+});
 export const borderLeftColor = createStyleParser({
-  propNames: 'borderLeftColor',
-  scale: 'colorPalette'
-})
+  propNames: "borderLeftColor",
+  scale: "colorPalette",
+});
 export const borderLeftStyle = createStyleParser({
-  propNames: 'borderLeftStyle',
-  scale: 'borderStyles'
-})
+  propNames: "borderLeftStyle",
+  scale: "borderStyles",
+});
