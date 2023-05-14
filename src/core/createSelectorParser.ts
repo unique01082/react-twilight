@@ -3,11 +3,9 @@ import intersection from 'lodash-es/intersection'
 import { ParseFunction, RawConfiguration, SelectorParser } from '../type'
 import normalizeInput from './normalizeInput'
 import toStyledObject from './toStyledObject'
-import twilight from './twilight'
+import { twilight } from './twilight'
 
-export default function createSelectorParser(
-  input: RawConfiguration
-): SelectorParser {
+export function createSelectorParser(input: RawConfiguration): SelectorParser {
   const selectorParser: ParseFunction = (props, theme = props.theme) => {
     const propsToProcess = difference(
       // @ts-ignore because styled will be assigned value in return
@@ -16,6 +14,7 @@ export default function createSelectorParser(
     )
 
     const result = propsToProcess.reduce(
+      // @ts-ignore
       (acc, prop) => Object.assign(acc, twilight(props[prop], theme)),
       {}
     )

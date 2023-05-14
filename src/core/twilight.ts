@@ -1,11 +1,12 @@
 import difference from 'lodash-es/difference'
 import intersection from 'lodash-es/intersection'
 import merge from 'lodash-es/merge'
-import styled from '@baolq/styled-components'
-import { parsersManager } from '.'
+import styled from 'styled-components'
+import { ThemeProps } from '../type'
+import { parsersManager } from './parsersManager'
 
-const twilight = (
-  props: { ignoreProps?: string[]; theme: object },
+export const twilight = (
+  props: { ignoreProps?: string[]; theme: ThemeProps },
   theme = props.theme
 ): object => {
   const propsToProcess = difference(
@@ -14,8 +15,7 @@ const twilight = (
   )
 
   const result = propsToProcess.reduce(
-    // @ts-ignore because parsersManager.get(prop) always exists
-    (acc, prop) => merge(acc, parsersManager.get(prop)(props, theme)),
+    (acc, prop) => merge(acc, parsersManager.get(prop)!(props, theme)),
     {}
   )
 
@@ -26,8 +26,7 @@ export const tl = new Proxy<object>(
   {},
   {
     apply: Reflect.apply,
+    // @ts-ignore
     get: (_target, prop) => styled[prop](twilight)
   }
 )
-
-export default twilight

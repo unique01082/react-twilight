@@ -13,7 +13,8 @@ const cssParser: Parser = ({ css, theme }) => {
         parsersManager.has(key)
           ? // @ts-ignore checked with has()
             parsersManager.get(key)(css, theme)
-          : { [key]: css[key] }
+          : // @ts-ignore
+            { [key]: css[key] }
       ),
     {}
   )
