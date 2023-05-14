@@ -5,6 +5,7 @@ export const backgroundColor = createStyleParser({
   propNames: ['backgroundColor', 'bg'],
   scale: 'colorPalette'
 })
+
 export const backgroundImage = createStyleParser(['backgroundImage', 'bgImage'])
 export const backgroundSize = createStyleParser(['backgroundSize', 'bgSize'])
 export const backgroundPosition = createStyleParser([

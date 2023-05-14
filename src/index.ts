@@ -1,4 +1,4 @@
-import { ThemeConsumer } from '@baolq/styled-components'
+import { ThemeConsumer } from 'styled-components'
 import {
   createSelectorParser,
   createStyleParser,
@@ -7,16 +7,16 @@ import {
   parsersManager,
   tl,
   twilight,
-  twilightPragma
+  twilightPragma,
+  withTwilight,
+  ThemeProvider
 } from './core'
 import * as csses from './cssParsers'
 import * as selectors from './selectorParsers'
 import * as styles from './styleParsers'
-import ThemeProvider from './ThemeProvider'
 import { Parser } from './type'
 import { buildValues } from './utils'
 import * as variants from './variantParsers'
-import withTwilight from './withTwilight'
 
 const addAll = (parsers: { [index: string]: Parser }) => {
   Object.keys(parsers).forEach((key) => {
@@ -39,6 +39,8 @@ export {
   buildValues,
   styles,
   csses,
+  selectors,
+  variants,
   addAllStyles,
   addAllSelectors,
   addAllVariants,

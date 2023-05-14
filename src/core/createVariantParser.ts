@@ -4,11 +4,9 @@ import isNil from 'lodash-es/isNil'
 import isPlainObject from 'lodash-es/isPlainObject'
 import { ParseFunction, RawConfiguration, VariantParser } from '../type'
 import normalizeInput from './normalizeInput'
-import twilight from './twilight'
+import { twilight } from './twilight'
 
-export default function createVariantParser(
-  input: RawConfiguration
-): VariantParser {
+export function createVariantParser(input: RawConfiguration): VariantParser {
   const selectorParser: ParseFunction = (props, theme = props.theme) => {
     const { _breakpointsMap } = theme
     const propsToProcess = difference(
@@ -18,6 +16,7 @@ export default function createVariantParser(
     )
 
     const result = propsToProcess.reduce((acc, prop) => {
+      // @ts-ignore
       const rawValue = props[prop]
 
       if (['string', 'number', 'boolean', 'symbol'].includes(typeof rawValue)) {
@@ -48,6 +47,7 @@ export default function createVariantParser(
             props.theme
           )
           if (isNil(value)) return acc
+          // @ts-ignore
           const media = _breakpointsMap[key]?.[1]
 
           return Object.assign(acc, !media ? value : { [media]: value })

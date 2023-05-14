@@ -1,7 +1,7 @@
 import type { Parser } from '../type'
 
 class ParsersSet<P extends Parser> extends Set<P> {
-  private readonly _parsersMap: Map<string, P> = new Map<string, P>()
+  private readonly _parsersMap = new Map<string | number | symbol, P>()
 
   add(parser: P): this {
     if (!parser) {
@@ -36,12 +36,12 @@ class ParsersSet<P extends Parser> extends Set<P> {
     }
 
     const result: boolean = super.delete(parser)
-    this.refreshReferancesMap()
+    this.refreshReferencesMap()
 
     return result
   }
 
-  isPropSupported(prop: string): boolean {
+  isPropSupported(prop: string | number | symbol): boolean {
     return this._parsersMap.has(prop)
   }
 
@@ -52,25 +52,23 @@ class ParsersSet<P extends Parser> extends Set<P> {
     return super.has(parser)
   }
 
-  get(key: string): P | undefined {
+  get(key: string | number | symbol): P | undefined {
     return this._parsersMap.get(key)
   }
 
-  getReferencesMap(): Map<string, P> {
+  getReferencesMap(): typeof this._parsersMap {
     return this._parsersMap
   }
 
-  getSupportedProps(): string[] {
+  getSupportedProps(): Array<string | number | symbol> {
     return Array.from(this._parsersMap.keys())
   }
 
-  refreshReferancesMap(): void {
+  refreshReferencesMap(): void {
     this._parsersMap.clear()
     this.forEach((parser) => this.add(parser))
   }
 }
 
-const parsersManager = new ParsersSet<Parser>()
-
-export default parsersManager
+export const parsersManager = new ParsersSet<Parser>()
 export const getParsersManager: () => ParsersSet<Parser> = () => parsersManager

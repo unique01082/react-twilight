@@ -14,9 +14,7 @@ import { get } from '../utils'
 import normalizeInput from './normalizeInput'
 import toStyledObject from './toStyledObject'
 
-export default function createStyleParser(
-  input: RawConfiguration
-): StyleParser {
+export function createStyleParser(input: RawConfiguration): StyleParser {
   const parseFn = (
     rawValue: any,
     props: ParserProps,
@@ -57,6 +55,7 @@ export default function createStyleParser(
         if (isNil(value)) return acc
         // @ts-ignore because styled will be assigned value in return
         const styledObject = toStyledObject(value, styledFn.properties)
+        // @ts-ignore
         const media = _breakpointsMap[key]?.[1]
 
         return Object.assign(
@@ -76,6 +75,7 @@ export default function createStyleParser(
     )
 
     const result = propsToProcess.reduce(
+      // @ts-ignore
       (acc, prop) => merge(acc, parseFn(props[prop], props, theme)),
       {}
     )

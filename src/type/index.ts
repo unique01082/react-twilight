@@ -25,6 +25,7 @@ export type Breakpoint = [string | number, string]
 export interface ThemeProps {
   breakpoints: string[] | number[]
   _breakpointsMap: Breakpoint[]
+  [key: string | number | symbol]: any
 }
 
 export interface ParserProps {
