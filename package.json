@@ -1,13 +1,13 @@
 {
   "name": "react-twilight",
-  "version": "0.5.3-alpha",
+  "version": "0.5.3-beta",
   "description": "Same as styled-system, but central manage and added a lot of abilities",
   "author": "unique01082",
   "license": "MIT",
   "repository": "unique01082/react-twilight",
   "type": "module",
-  "main": "dist/react-twilight.cjs",
-  "module": "dist/react-twilight.js",
+  "main": "dist/react-twilight.cjs.js",
+  "module": "dist/react-twilight.es.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "dev": "vite",
