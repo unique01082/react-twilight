@@ -31,9 +31,16 @@ export interface ThemeProps {
 export interface ParserProps {
   theme: ThemeProps;
   ignoreProps?: string[];
-  css?: object;
+  css?: Record<string | number | symbol, any>;
+  [key: string | number | symbol]: any;
 }
 
+export enum ParserType {
+  STYLE = "style",
+  SELECTOR = "selector",
+  VARIANT = "variant",
+  CSS = "css",
+}
 export interface ParserDescription {
   propNames: string[];
   _type: "style" | "selector" | "variant" | "css";

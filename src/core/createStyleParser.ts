@@ -1,11 +1,14 @@
-import difference from "lodash-es/difference";
-import intersection from "lodash-es/intersection";
-import isNil from "lodash-es/isNil";
-import isPlainObject from "lodash-es/isPlainObject";
-import merge from "lodash-es/merge";
+import {
+  difference,
+  intersection,
+  isNil,
+  isPlainObject,
+  merge,
+} from "lodash-es";
 import {
   ParseFunction,
   ParserProps,
+  ParserType,
   RawConfiguration,
   StyleParser,
   ThemeProps,
@@ -84,6 +87,6 @@ export function createStyleParser(input: RawConfiguration): StyleParser {
   };
 
   return Object.assign(styledFn, normalizeInput(input), {
-    _type: "style" as const,
+    _type: ParserType.STYLE,
   });
 }

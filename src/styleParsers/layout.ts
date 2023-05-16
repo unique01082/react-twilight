@@ -1,5 +1,5 @@
-import isNumber from "lodash-es/isNumber";
 import { createStyleParser } from "../core";
+import { isNumber } from "lodash-es";
 import { get } from "../utils";
 
 // @ts-ignore

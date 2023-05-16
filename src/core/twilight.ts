@@ -1,9 +1,7 @@
-import difference from "lodash-es/difference";
-import intersection from "lodash-es/intersection";
-import merge from "lodash-es/merge";
 import styled from "styled-components";
 import { ThemeProps } from "../type";
 import { parsersManager } from "./parsersManager";
+import { difference, intersection, merge } from "lodash-es";
 
 export const twilight = (
   props: { ignoreProps?: string[]; theme: ThemeProps },

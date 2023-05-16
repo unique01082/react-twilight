@@ -18,8 +18,7 @@ import Sample2 from "./Sample2";
 // import TwilightPragma from './TwilightPragma'
 import TwilightFactory from "./TwilightFactory";
 import defaultTheme from "./defaultTheme";
-
-const Box = withTwilight("div");
+import { Box } from "./Box";
 
 const Menu = ({ menu }) => {
   const { pathname } = useLocation();

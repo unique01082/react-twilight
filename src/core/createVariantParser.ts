@@ -1,8 +1,10 @@
-import difference from "lodash-es/difference";
-import intersection from "lodash-es/intersection";
-import isNil from "lodash-es/isNil";
-import isPlainObject from "lodash-es/isPlainObject";
-import { ParseFunction, RawConfiguration, VariantParser } from "../type";
+import { difference, isNil, isPlainObject, intersection } from "lodash-es";
+import {
+  ParseFunction,
+  ParserType,
+  RawConfiguration,
+  VariantParser,
+} from "../type";
 import normalizeInput from "./normalizeInput";
 import { twilight } from "./twilight";
 
@@ -65,6 +67,6 @@ export function createVariantParser(input: RawConfiguration): VariantParser {
   return Object.assign(selectorParser, {
     propNames,
     scaleName,
-    _type: "variant" as const,
+    _type: ParserType.VARIANT,
   });
 }

@@ -4,14 +4,8 @@ import { twilight } from "./twilight";
 
 // true => pass to component
 // false => skip
-const shouldForwardProp: StyledConfig<any>["shouldForwardProp"] = (
-  prop: any
-) => {
-  if (parsersManager.isPropSupported(prop) || prop === "ignoreProps") {
-    return false;
-  }
-  return true;
-};
+const shouldForwardProp: StyledConfig<any>["shouldForwardProp"] = (prop) =>
+  !(parsersManager.isPropSupported(prop) || prop === "ignoreProps");
 
 export const withTwilight = (Component: Parameters<typeof styled>[0]) =>
   styled<any>(Component).withConfig({

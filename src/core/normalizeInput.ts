@@ -1,4 +1,4 @@
-import isPlainObject from "lodash-es/isPlainObject";
+import { isPlainObject } from "lodash-es";
 import pluralize from "pluralize";
 import type { Configuration, RawConfiguration } from "../type";
 import { get } from "../utils";

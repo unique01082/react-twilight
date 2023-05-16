@@ -52,15 +52,15 @@ class ParsersSet<P extends Parser> extends Set<P> {
     return super.has(parser);
   }
 
-  get(key: string | number | symbol): P | undefined {
+  get(key: string | number | symbol) {
     return this._parsersMap.get(key);
   }
 
-  getReferencesMap(): typeof this._parsersMap {
+  getReferencesMap(): Map<string | number | symbol, P> {
     return this._parsersMap;
   }
 
-  getSupportedProps(): Array<string | number | symbol> {
+  getSupportedProps() {
     return Array.from(this._parsersMap.keys());
   }
 
@@ -71,4 +71,4 @@ class ParsersSet<P extends Parser> extends Set<P> {
 }
 
 export const parsersManager = new ParsersSet<Parser>();
-export const getParsersManager: () => ParsersSet<Parser> = () => parsersManager;
+export const getParsersManager = () => parsersManager;
