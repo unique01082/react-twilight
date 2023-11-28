@@ -23,6 +23,7 @@ const Playground = () => {
       expandIconPosition="right"
     >
       <Panel header="Group" key="1">
+        <Box size={300} bg="red" whileHover={{ bg: "blue" }}></Box>
         <Box
           m={32}
           p={12}
@@ -38,10 +39,7 @@ const Playground = () => {
           >
             New Project
           </P>
-          <P
-            group="test"
-            // whileGroup={{ whileHover: { color: '#fff9' } }}
-          >
+          <P group="test" whileGroup={{ whileHover: { color: "#fff9" } }}>
             Create a new project from a variety of starting templates.
           </P>
         </Box>

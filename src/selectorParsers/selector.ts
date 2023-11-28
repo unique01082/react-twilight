@@ -2,47 +2,47 @@ import { createSelectorParser } from "../core";
 
 export const active = createSelectorParser({
   propNames: "whileActive",
-  properties: ":active",
+  properties: "&:active",
 });
 
 export const hover = createSelectorParser({
   propNames: "whileHover",
-  properties: ":hover",
+  properties: "&:hover",
 });
 
 export const focus = createSelectorParser({
   propNames: "whileFocus",
-  properties: ":focus",
+  properties: "&:focus",
 });
 
 export const enable = createSelectorParser({
   propNames: "whileEnable",
-  properties: ":enable",
+  properties: "&:enable",
 });
 
 export const disabled = createSelectorParser({
   propNames: "whileDisabled",
-  properties: ":disabled",
+  properties: "&:disabled",
 });
 
 export const checked = createSelectorParser({
   propNames: "whileChecked",
-  properties: ":checked",
+  properties: "&:checked",
 });
 
 export const indeterminate = createSelectorParser({
   propNames: "whileIndeterminate ",
-  properties: ":indeterminate ",
+  properties: "&:indeterminate ",
 });
 
 export const link = createSelectorParser({
   propNames: "whileLink",
-  properties: ":link",
+  properties: "&:link",
 });
 
 export const visited = createSelectorParser({
   propNames: "whileVisited",
-  properties: ":visited",
+  properties: "&:visited",
 });
 
 export const target = createSelectorParser({
@@ -52,27 +52,27 @@ export const target = createSelectorParser({
 
 export const valid = createSelectorParser({
   propNames: "whileValid",
-  properties: ":valid",
+  properties: "&:valid",
 });
 
 export const invalid = createSelectorParser({
   propNames: "whileInvalid",
-  properties: ":invalid",
+  properties: "&:invalid",
 });
 
 export const required = createSelectorParser({
   propNames: "whileRequired",
-  properties: ":required",
+  properties: "&:required",
 });
 
 export const optional = createSelectorParser({
   propNames: "whileOptional",
-  properties: ":optional",
+  properties: "&:optional",
 });
 
 export const placeholder = createSelectorParser({
   propNames: "whilePlaceholder",
-  properties: ":placeholder",
+  properties: "&:placeholder",
 });
 
 export const group = createSelectorParser({
